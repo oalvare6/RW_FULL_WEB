@@ -30,7 +30,7 @@ const Header = () => {
           
           <div className="hidden md:flex items-center">
             <a 
-              href="tel:+18005550199" 
+              href="tel:+18324770896" 
               className="flex items-center gap-2 text-slate-900 font-medium text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors"
             >
               <Phone className="h-4 w-4" />
@@ -85,7 +85,7 @@ const Header = () => {
             </a>
             <div className="mt-4 pt-4 border-t border-gray-100">
               <a 
-                href="tel:+18005550199" 
+                href="tel:+18324770896" 
                 className="flex items-center justify-center gap-2 w-full text-slate-900 font-medium text-base bg-gray-50 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors"
               >
                 <Phone className="h-4 w-4" />
@@ -319,7 +319,7 @@ const Contact = () => (
           </div>
           <h3 className="text-lg font-medium text-gray-900">Phone</h3>
           <p className="mt-2 text-gray-600 text-center">Main Operations</p>
-          <a href="tel:+18325550100" className="mt-2 text-blue-700 font-medium hover:underline">(832) 555-0100</a>
+          <a href="tel:+18324770896" className="mt-2 text-blue-700 font-medium hover:underline">(832) 477-0896</a>
         </div>
 
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm">
