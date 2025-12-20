@@ -266,41 +266,98 @@ const LanesAndFreight = () => (
   </section>
 );
 
-const Drivers = () => (
-  <section id="drivers" className="py-24 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-xl">
-        <div className="px-6 py-12 md:p-16 text-center md:text-left md:flex md:items-center md:justify-between">
-          <div className="md:w-2/3">
-            <h2 className="text-2xl font-bold text-white mb-4">Driving Opportunities</h2>
-            <p className="text-blue-100 text-lg mb-6">
-              We work with experienced company drivers and owner-operators who understand flatbed operations. 
-              If you value safety, clear communication, and consistent miles, contact our recruiting team.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <div className="flex items-center text-blue-200">
-                <Truck className="h-5 w-5 mr-2" />
-                <span>Flatbed Experience Required</span>
+const Drivers = () => {
+  const [expanded, setExpanded] = React.useState(false);
+
+  return (
+    <section id="drivers" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div className="px-6 py-12 md:p-16 text-center md:text-left md:flex md:items-center md:justify-between">
+            <div className="md:w-2/3">
+              <h2 className="text-3xl font-bold text-white mb-2">Driving Opportunities</h2>
+              <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+                We work with experienced company drivers and owner-operators who understand flatbed operations. 
+                If you value safety, clear communication, and consistent miles, contact our recruiting team.
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center text-blue-200 hover:text-blue-100 transition-colors group cursor-default">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-700 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors">
+                    <Truck className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="font-medium">Flatbed Experience Required</span>
+                </div>
+                <div className="flex items-center text-blue-200 hover:text-blue-100 transition-colors group cursor-default">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-700 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors">
+                    <MapPin className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="font-medium">Texas & Southeast Lanes</span>
+                </div>
               </div>
-              <div className="flex items-center text-blue-200">
-                <MapPin className="h-5 w-5 mr-2" />
-                <span>Texas & Southeast Lanes</span>
-              </div>
+
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="text-blue-200 hover:text-blue-100 text-sm font-medium flex items-center gap-2 transition-colors mb-6"
+              >
+                <span>{expanded ? '▼' : '▶'}</span>
+                <span>What to Expect</span>
+              </button>
+
+              {expanded && (
+                <div className="bg-slate-800 rounded-lg p-5 mb-6 border border-slate-700 animate-fadeIn">
+                  <ul className="space-y-3 text-blue-100 text-sm">
+                    <li className="flex items-start">
+                      <span className="text-blue-400 mr-3 flex-shrink-0">•</span>
+                      <span>Direct communication and support from operations and recruiting teams</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-400 mr-3 flex-shrink-0">•</span>
+                      <span>Consistent regional routes with predictable drop-offs</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-400 mr-3 flex-shrink-0">•</span>
+                      <span>Safe, asset-based operations with proper equipment maintenance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-400 mr-3 flex-shrink-0">•</span>
+                      <span>Professional driver culture focused on compliance and safety</span>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
-          </div>
-          <div className="mt-8 md:mt-0 md:w-1/3 flex justify-center md:justify-end">
-            <a 
-              href="mailto:recruiting@riverwaylogistics.com"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-slate-900 bg-white hover:bg-gray-50 transition-colors"
-            >
-              Contact Recruiting
-            </a>
+
+            <div className="mt-10 md:mt-0 md:w-1/3 flex justify-center md:justify-end">
+              <a 
+                href="mailto:recruiting@riverwaylogistics.com"
+                className="inline-flex items-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg text-slate-900 bg-white hover:bg-blue-50 hover:text-blue-900 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                <span>Contact Recruiting</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            max-height: 0;
+          }
+          to {
+            opacity: 1;
+            max-height: 500px;
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+      `}</style>
+    </section>
+  );
+};
 
 const Contact = () => (
   <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200">
