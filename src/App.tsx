@@ -142,7 +142,7 @@ const Hero = () => (
       <div className="mt-12 max-w-sm sm:flex sm:max-w-none">
         <div className="space-y-4 sm:space-y-0 sm:inline-grid sm:grid-cols-2 sm:gap-5">
           <a
-            href="#contact"
+            href="tel:+18324770896"
             className="flex items-center justify-center px-6 py-4 border border-transparent text-base font-semibold rounded-lg shadow-lg text-slate-900 bg-white hover:bg-gray-100 transition-all sm:px-10"
           >
             Contact Operations
@@ -243,7 +243,7 @@ const LanesAndFreight = () => (
             </div>
 
             <a
-              href="#contact"
+              href="tel:+18324770896"
               className="inline-block mt-8 px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors"
             >
               Request a Quote
