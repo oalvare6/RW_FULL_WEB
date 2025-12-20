@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0 flex items-center">
               <img 
@@ -130,20 +130,20 @@ const Hero = () => (
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent mix-blend-multiply" />
     </div>
-    <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+    <div className="relative max-w-7xl mx-auto py-32 px-4 sm:py-40 sm:px-6 lg:px-8">
+      <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
         Professional Flatbed <br className="hidden sm:block" />
         Transportation Services
       </h1>
-      <p className="mt-6 text-xl text-gray-300 max-w-3xl">
+      <p className="mt-8 text-lg text-gray-200 max-w-3xl leading-relaxed">
         Riverway Logistics is a compliance-driven motor carrier serving Texas and the Southeast. 
         We provide reliable regional and long-haul solutions for industrial freight.
       </p>
-      <div className="mt-10 max-w-sm sm:flex sm:max-w-none">
+      <div className="mt-12 max-w-sm sm:flex sm:max-w-none">
         <div className="space-y-4 sm:space-y-0 sm:inline-grid sm:grid-cols-2 sm:gap-5">
           <a
             href="#contact"
-            className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-slate-900 bg-white hover:bg-gray-50 sm:px-8"
+            className="flex items-center justify-center px-6 py-4 border border-transparent text-base font-semibold rounded-lg shadow-lg text-slate-900 bg-white hover:bg-gray-100 transition-all sm:px-10"
           >
             Contact Operations
           </a>
@@ -154,14 +154,14 @@ const Hero = () => (
 );
 
 const Overview = () => (
-  <section className="py-16 bg-white">
+  <section className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center mb-12">
+      <div className="lg:text-center mb-16">
         <h2 className="text-base text-blue-800 font-semibold tracking-wide uppercase">Company Overview</h2>
-        <p className="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <p className="mt-4 text-4xl leading-9 font-bold tracking-tight text-gray-900 sm:text-5xl">
           Legitimate, Compliance-Driven Carrier
         </p>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        <p className="mt-6 max-w-2xl text-lg text-gray-600 lg:mx-auto leading-relaxed">
           We operate as a dedicated motor carrier, not a broker or freight marketplace. 
           Our focus is on safety, consistency, and professional execution for flatbed-appropriate freight.
         </p>
@@ -203,7 +203,7 @@ const Overview = () => (
 );
 
 const LanesAndFreight = () => (
-  <section id="services" className="py-16 bg-gray-50 border-t border-gray-200">
+  <section id="services" className="py-24 bg-gray-50 border-t border-gray-200">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="md:grid md:grid-cols-2 md:gap-16 items-center">
         <div>
@@ -241,6 +241,13 @@ const LanesAndFreight = () => (
                 </p>
               </div>
             </div>
+
+            <a
+              href="#contact"
+              className="inline-block mt-8 px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors"
+            >
+              Request a Quote
+            </a>
           </div>
         </div>
         <div className="mt-10 md:mt-0 relative">
@@ -260,7 +267,7 @@ const LanesAndFreight = () => (
 );
 
 const Drivers = () => (
-  <section id="drivers" className="py-16 bg-white">
+  <section id="drivers" className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-xl">
         <div className="px-6 py-12 md:p-16 text-center md:text-left md:flex md:items-center md:justify-between">
@@ -296,7 +303,7 @@ const Drivers = () => (
 );
 
 const Contact = () => (
-  <section id="contact" className="py-16 bg-gray-50 border-t border-gray-200">
+  <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-900">Contact Information</h2>
