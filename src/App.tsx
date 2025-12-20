@@ -11,14 +11,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <div className="flex-shrink-0 flex items-center gap-2">
-              <div className="bg-slate-900 p-1.5 rounded-sm">
-                <Truck className="h-6 w-6 text-white" />
-              </div>
-              <span className="font-bold text-xl text-slate-900 tracking-tight">
-                RIVERWAY <span className="font-normal text-slate-600">LOGISTICS</span>
-              </span>
-            </div>
+            <a href="#" className="flex-shrink-0 flex items-center">
+              <img 
+                src="/images/logo.jpg" 
+                alt="Riverway Logistics" 
+                className="h-16 w-auto"
+              />
+            </a>
           </div>
           
           {/* Desktop Navigation */}
@@ -343,7 +342,11 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div>
-          <h3 className="text-white text-lg font-bold mb-4">Riverway Logistics</h3>
+          <img 
+            src="/images/logo.jpg" 
+            alt="Riverway Logistics" 
+            className="h-20 w-auto mb-4"
+          />
           <p className="text-sm max-w-xs mb-4">
             Professional flatbed transportation services based in Spring, Texas. 
             Committed to safety, compliance, and reliable freight execution.
