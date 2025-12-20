@@ -246,8 +246,8 @@ const LanesAndFreight = () => (
         </div>
         <div className="mt-10 md:mt-0 relative">
           <img 
-            src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000" 
-            alt="Industrial pipes loaded for transport" 
+            src="/images/flatbed.png" 
+            alt="Semi truck flatbed loaded with cargo" 
             className="rounded-lg shadow-lg"
           />
           <div className="absolute -bottom-6 -left-6 bg-slate-900 p-6 rounded shadow-xl hidden lg:block">
