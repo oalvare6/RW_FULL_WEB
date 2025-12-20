@@ -156,49 +156,75 @@ const Hero = () => (
 const Overview = () => (
   <section className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center mb-16">
-        <h2 className="text-base text-blue-800 font-semibold tracking-wide uppercase">Company Overview</h2>
-        <p className="mt-4 text-4xl leading-9 font-bold tracking-tight text-gray-900 sm:text-5xl">
+      <div className="lg:text-center mb-20">
+        <h2 className="text-sm text-blue-700 font-bold tracking-widest uppercase letter-spacing">Company Profile</h2>
+        <p className="mt-6 text-4xl lg:text-5xl leading-tight font-bold tracking-tight text-gray-900">
           Legitimate, Compliance-Driven Carrier
         </p>
-        <p className="mt-6 max-w-2xl text-lg text-gray-600 lg:mx-auto leading-relaxed">
+        <p className="mt-8 max-w-3xl text-lg text-gray-600 lg:mx-auto leading-relaxed">
           We operate as a dedicated motor carrier, not a broker or freight marketplace. 
           Our focus is on safety, consistency, and professional execution for flatbed-appropriate freight.
         </p>
       </div>
       
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-        <div className="p-6 bg-gray-50 rounded-lg border border-gray-100">
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <Truck className="h-6 w-6 text-blue-800" />
+        <div className="group relative p-8 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50 group-hover:to-blue-100/30 rounded-xl transition-all duration-300 pointer-events-none" />
+          <div className="relative">
+            <div className="w-14 h-14 bg-blue-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-200">
+              <Truck className="h-7 w-7 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Flatbed Focused</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Specializing in steel, pipe, and industrial materials. We do not offer dry van, reefer, or box truck services.
+            </p>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Flatbed Focused</h3>
-          <p className="text-gray-600">
-            Specializing in steel, pipe, and industrial materials. We do not offer dry van, reefer, or box truck services.
-          </p>
         </div>
 
-        <div className="p-6 bg-gray-50 rounded-lg border border-gray-100">
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <Navigation className="h-6 w-6 text-blue-800" />
+        <div className="group relative p-8 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50 group-hover:to-blue-100/30 rounded-xl transition-all duration-300 pointer-events-none" />
+          <div className="relative">
+            <div className="w-14 h-14 bg-blue-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-200">
+              <Navigation className="h-7 w-7 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Core Lanes</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center text-gray-600">
+                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mr-3">→</span>
+                <span className="text-sm font-medium">Houston ↔ Georgia</span>
+              </li>
+              <li className="flex items-center text-gray-600">
+                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mr-3">→</span>
+                <span className="text-sm font-medium">Houston ↔ Midland, TX</span>
+              </li>
+              <li className="flex items-center text-gray-600">
+                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold mr-3">+</span>
+                <span className="text-sm font-medium">Southeast Coverage</span>
+              </li>
+            </ul>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Core Lanes</h3>
-          <p className="text-gray-600">
-            Primary routes include Houston ↔ Georgia and Houston ↔ Midland, Texas, with additional regional coverage across the Southeast.
-          </p>
         </div>
 
-        <div className="p-6 bg-gray-50 rounded-lg border border-gray-100">
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-            <ShieldCheck className="h-6 w-6 text-blue-800" />
+        <div className="group relative p-8 bg-white rounded-xl border-2 border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50 group-hover:to-blue-100/30 rounded-xl transition-all duration-300 pointer-events-none" />
+          <div className="relative">
+            <div className="w-14 h-14 bg-blue-700 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-200">
+              <ShieldCheck className="h-7 w-7 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Safety & Compliance</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Strict safety standards and direct communication. DOT authority <span className="font-semibold text-slate-900">3955747</span> reflects our unwavering commitment to compliance and professionalism.
+            </p>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">Safety First</h3>
-          <p className="text-gray-600">
-            We maintain strict safety standards and direct communication lines. Our DOT authority (3955747) reflects our commitment to compliance.
-          </p>
         </div>
       </div>
     </div>
+
+    <style>{`
+      .letter-spacing {
+        letter-spacing: 0.15em;
+      }
+    `}</style>
   </section>
 );
 
