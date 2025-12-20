@@ -13,9 +13,9 @@ const Header = () => {
           <div className="flex items-center">
             <a href="#" className="flex-shrink-0 flex items-center">
               <img 
-                src="/images/logo.jpg" 
+                src="/images/logo.png" 
                 alt="Riverway Logistics" 
-                className="h-16 w-auto"
+                className="h-20 w-auto"
               />
             </a>
           </div>
@@ -350,9 +350,9 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div>
           <img 
-            src="/images/logo.jpg" 
+            src="/images/logo.png" 
             alt="Riverway Logistics" 
-            className="h-20 w-auto mb-4"
+            className="h-24 w-auto mb-4"
           />
           <p className="text-sm max-w-xs mb-4">
             Professional flatbed transportation services based in Spring, Texas. 
