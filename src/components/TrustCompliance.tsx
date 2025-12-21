@@ -5,7 +5,7 @@ const TrustCompliance: React.FC = () => {
   const [openDoc, setOpenDoc] = useState<string | null>(null);
 
   const galleryImages = [
-    { src: '/images/trucks/truck-1.jpg', caption: 'Coil load heading to Midland' },
+    { src: '/images/trucks/truck-1.jpg', caption: 'Steel flatbed load to Midland, TX' },
     { src: '/images/trucks/truck-2.jpg', caption: 'Flatbed on Houston ↔ Georgia run' },
     { src: '/images/trucks/truck-3.jpg', caption: 'Steel delivery in Southeast Texas' },
     { src: '/images/trucks/truck-4.jpg', caption: 'Pipe transport for oilfield' },
