@@ -167,7 +167,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
         muted
         playsInline
         poster="/images/flatbed.png"
-        className="w-full h-full object-cover opacity-40"
+        className="w-full h-full object-cover"
       >
         <source src="/images/hero-video.mp4" type="video/mp4" />
         <img
@@ -176,7 +176,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
           alt="Flatbed semi truck loaded with industrial cargo - Riverway Logistics"
         />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent" />
     </div>
     <div className="relative max-w-7xl mx-auto py-32 px-4 sm:py-40 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
