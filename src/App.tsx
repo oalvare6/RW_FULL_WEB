@@ -326,8 +326,8 @@ const LanesAndFreight = () => (
         </div>
         <div className="mt-10 md:mt-0 relative">
           <img 
-            src="/images/flatbed.png" 
-            alt="Semi truck flatbed loaded with cargo" 
+            src="/images/truck-coils.png" 
+            alt="Peterbilt flatbed truck with steel coils" 
             className="rounded-lg shadow-lg"
           />
           <div className="absolute -bottom-6 -left-6 bg-slate-900 p-6 rounded shadow-xl hidden lg:block">
