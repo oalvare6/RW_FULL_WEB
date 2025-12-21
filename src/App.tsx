@@ -32,13 +32,20 @@ const Header = () => {
             <a href="#contact" className="text-gray-600 hover:text-slate-900 text-sm font-medium transition-colors">Contact</a>
           </div>
           
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-3">
             <a 
-              href="tel:+18324770896" 
+              href="mailto:dispatch@riverwaylogistics.com" 
               className="flex items-center gap-2 text-slate-900 font-medium text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors"
             >
+              <Mail className="h-4 w-4" />
+              <span>Email Us</span>
+            </a>
+            <a 
+              href="tel:+18324770896" 
+              className="flex items-center gap-2 text-white font-medium text-sm bg-slate-900 px-4 py-2 rounded hover:bg-slate-800 transition-colors"
+            >
               <Phone className="h-4 w-4" />
-              <span>Contact Operations</span>
+              <span>Call Now</span>
             </a>
           </div>
 
@@ -87,13 +94,20 @@ const Header = () => {
             >
               Contact
             </a>
-            <div className="mt-4 pt-4 border-t border-gray-100">
+            <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
               <a 
-                href="tel:+18324770896" 
+                href="mailto:dispatch@riverwaylogistics.com" 
                 className="flex items-center justify-center gap-2 w-full text-slate-900 font-medium text-base bg-gray-50 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors"
               >
+                <Mail className="h-4 w-4" />
+                <span>Email Us</span>
+              </a>
+              <a 
+                href="tel:+18324770896" 
+                className="flex items-center justify-center gap-2 w-full text-white font-medium text-base bg-slate-900 px-4 py-3 rounded-md hover:bg-slate-800 transition-colors"
+              >
                 <Phone className="h-4 w-4" />
-                <span>Contact Operations</span>
+                <span>Call Now</span>
               </a>
             </div>
           </div>
@@ -119,6 +133,13 @@ const AuthorityBanner = () => (
           <MapPin className="h-4 w-4 text-blue-400" />
           Spring, TX
         </span>
+        <a 
+          href="mailto:dispatch@riverwaylogistics.com" 
+          className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors"
+        >
+          <Mail className="h-4 w-4" />
+          dispatch@riverwaylogistics.com
+        </a>
       </div>
       <a
         href="https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY"
@@ -453,7 +474,7 @@ const Contact = () => (
 const Footer = () => (
   <footer className="bg-slate-900 text-gray-400 py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         <div>
           <img 
             src="/images/logo.png" 
@@ -467,6 +488,25 @@ const Footer = () => (
           <div className="flex gap-4 text-xs font-mono text-gray-500">
             <span>MC: 1473682</span>
             <span>DOT: 3955747</span>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-white font-semibold mb-4">Quick Contact</h4>
+          <div className="space-y-3">
+            <a 
+              href="mailto:dispatch@riverwaylogistics.com" 
+              className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              dispatch@riverwaylogistics.com
+            </a>
+            <a 
+              href="tel:+18324770896" 
+              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              (832) 477-0896
+            </a>
           </div>
         </div>
         <div className="md:text-right">
