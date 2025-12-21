@@ -167,7 +167,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
         muted
         playsInline
         poster="/images/flatbed.png"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover object-bottom"
       >
         <source src="/images/hero-video.mp4" type="video/mp4" />
         <img
