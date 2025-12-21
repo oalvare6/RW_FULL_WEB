@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Truck, MapPin, ShieldCheck, Phone, Mail, FileText, Navigation, Info, Menu, X, ExternalLink, ChevronDown } from "lucide-react";
 import QuoteForm from "./components/QuoteForm";
+import DriverApplicationForm from "./components/DriverApplicationForm";
 import BackToTop from "./components/BackToTop";
 import TrustCompliance from "./components/TrustCompliance";
 
@@ -313,7 +314,7 @@ const LanesAndFreight = () => (
   </section>
 );
 
-const Drivers = () => {
+const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
@@ -392,12 +393,12 @@ const Drivers = () => {
               </div>
 
               <div className="mt-8 md:mt-0 md:w-1/3 flex justify-center md:justify-end">
-                <a 
-                  href="mailto:recruiting@riverwaylogistics.com?subject=Driver%20Application%20%E2%80%93%20Riverway"
+                <button 
+                  onClick={onOpenDriverForm}
                   className="inline-flex items-center px-8 py-4 border border-transparent text-base font-semibold rounded-lg text-slate-900 bg-white hover:bg-blue-50 hover:text-blue-900 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   Apply Now
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -483,6 +484,7 @@ const Footer = () => (
 
 const App = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [isDriverModalOpen, setIsDriverModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
@@ -493,12 +495,13 @@ const App = () => {
         <Overview />
         <LanesAndFreight />
         <TrustCompliance />
-        <Drivers />
+        <Drivers onOpenDriverForm={() => setIsDriverModalOpen(true)} />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
       <QuoteForm isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
+      <DriverApplicationForm isOpen={isDriverModalOpen} onClose={() => setIsDriverModalOpen(false)} />
     </div>
   );
 };

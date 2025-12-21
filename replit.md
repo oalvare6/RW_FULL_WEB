@@ -32,10 +32,15 @@ The application uses a component-based architecture under `src/components/`:
 4. **Responsive Design:** Mobile-first with hamburger menu for navigation
 
 ### Form Handling
-- Quote submissions sent to Formspree endpoint
-- Environment variable `VITE_FORMSPREE_ENDPOINT` configures the submission URL
-- Fallback mailto link to `dispatch@riverwaylogistics.com` if Formspree unavailable
-- Form includes validation states: idle, submitting, success, error
+- **Quote Form**: Freight quote submissions sent to Formspree endpoint
+  - Environment variable `VITE_FORMSPREE_ENDPOINT` configures the submission URL
+  - Fallback mailto link to `dispatch@riverwaylogistics.com` if Formspree unavailable
+- **Driver Application Form**: Driver recruitment applications sent to separate Formspree endpoint
+  - Environment variable `VITE_DRIVER_FORMSPREE_ENDPOINT` configures the submission URL
+  - Collects CDL info, experience, endorsements, and driving record
+  - Fallback mailto link to `recruiting@riverwaylogistics.com`
+- Both forms include validation states: idle, submitting, success, error
+- Both modals have full accessibility: focus trap, ESC to close, overlay click to close
 
 ### Static Assets
 - Images stored in `/public/images/` (logo, truck photos)
