@@ -1,0 +1,102 @@
+You are a Replit coding agent with full Git access. Implement the “fix-first” items from the Website UX and Credibility Improvements report into this repo (Vite + React + Tailwind). Keep changes realistic (no full redesign), prioritize credibility + speed to action, and avoid heavy dependencies.
+
+Primary file to refactor: src/App.tsx (it’s currently a single-page layout with sections).
+Goal: make the site feel like a real asset-based carrier site for brokers + drivers with stronger trust signals, clearer CTAs, and small polish interactions.
+
+NON-NEGOTIABLE ACCEPTANCE CRITERIA (must verify in browser before final commit):
+1) Persistent Authority Top Bar
+- Add a thin dark “authority strip” above the header that stays visible while scrolling (sticky).
+- It must display: “MC 1473682”, “DOT 3955747”, and “Spring, TX”.
+- It must include a link “FMCSA Snapshot” that opens in a new tab:
+  https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY
+- The top bar must appear site-wide (on every page/route if routes exist).
+
+2) Hero CTAs
+- Update hero copy to be more specific/authentic (Texas-based, flatbed, TX + Southeast).
+- Replace generic hero image with a local asset placeholder (keep it <200KB), add alt text.
+- Add TWO hero buttons visible on desktop + mobile:
+  a) “Book a Load” -> opens a modal QuoteForm
+  b) “Drive With Us” -> scrolls to Drivers section or opens recruiting CTA (mailto/form)
+- Buttons must have clear hover + focus-visible states.
+
+3) QuoteForm Modal Component
+- Create a new component: src/components/QuoteForm.tsx (and any small shared UI helpers).
+- “Book a Load” opens the modal. Modal closes on:
+  - X button
+  - overlay click
+  - ESC key
+- Fields (exactly these, minimal + clean):
+  Name, Company, Email, Phone, Freight Type, Origin, Destination
+- On submit:
+  - Use Formspree or a simple backend endpoint (choose the easiest). If Formspree:
+    - Read endpoint from env var: VITE_FORMSPREE_ENDPOINT
+    - POST form data to it
+  - Show an in-UI success confirmation message after successful submit.
+  - Show a simple error state if submit fails (and offer a fallback mailto link to dispatch@riverwaylogistics.com).
+- Keep it accessible: focus trap inside modal, focus-visible rings, correct labels.
+
+4) Drivers Section Upgrade
+- Make Drivers section more specific:
+  - Mention at least: 1 year flatbed experience requirement, TX/SE runs, home time (most weekends), and pay style (“pay range or percentage of line haul available on request”).
+  - Add bullets with concrete perks (e.g., weekly settlements, direct dispatch line, no forced dispatch, etc.).
+- Change CTA to “Apply Now” and link to:
+  mailto:recruiting@riverwaylogistics.com
+  (prefill subject like “Driver Application – Riverway”)
+- Add a small accordion labeled “More Details” with 4–6 benefit items; smooth open/close animation.
+
+5) Trust & Compliance Section (NEW)
+- Insert after Capabilities: a section titled “Trust & Compliance”.
+- Include:
+  A) Lightweight photo gallery (no external slider library):
+     - Use a horizontally scrollable gallery with CSS scroll-snap.
+     - 3–6 placeholder images (create a folder public/images/trucks/ with placeholder filenames).
+     - Each image must have a short caption (e.g., “Coil load heading to Midland.”).
+     - Must be swipeable on mobile.
+  B) Collapsible “Docs” entries (accordion or details/summary) for:
+     - W-9
+     - Insurance Certificate
+     - MC Authority
+     - Carrier Packet (optional)
+     - Use placeholder PDFs stored at public/docs/ (add small dummy PDFs or keep links ready; if no PDFs available, link to “available on request” but keep the UI structure).
+     - Each entry expands to reveal a link that opens a PDF in a new tab (or triggers download).
+
+6) Global Styling + Micro-Polish
+- Unify type scale (Tailwind-based):
+  - h1 ~ 3rem
+  - h2 ~ 2rem
+  - h3 ~ 1.25rem
+  - consistent body size
+- Fix spacing inconsistencies between sections (use consistent max-width, padding, section gaps).
+- Add hover states for cards/buttons (shadow and subtle transform ok) and ensure focus-visible states for keyboard users.
+- Keep the aesthetic blue-collar/simple; no fancy gradients or animations beyond subtle transitions.
+
+7) Back-to-top Button
+- Add a subtle floating back-to-top button bottom-right.
+- It appears only after user scrolls past ~50% of the page height.
+- Clicking smoothly scrolls to top.
+
+OPTIONAL (only if it won’t bloat the project or break the simple flow):
+- Split into routes using React Router: / (home), /services, /drivers, /about, /contact
+- If you do routing:
+  - nav updates URL
+  - direct access to each route works
+  - hero only on homepage
+If routing risks scope creep, skip it and keep anchors + sticky header.
+
+IMPLEMENTATION NOTES / CONSTRAINTS
+- Prefer small new components over rewriting everything in App.tsx.
+- Do not add heavy UI libraries. Use Tailwind + small React components only.
+- Ensure mobile layout looks intentional (top bar readable, CTAs visible, modals usable).
+- Update or add any assets (images/docs) needed for placeholders.
+
+DELIVERABLES
+- Code changes committed to a new branch (or directly if that’s the repo’s flow), with clear commit messages.
+- If Formspree is used: update README with setup:
+  - how to set VITE_FORMSPREE_ENDPOINT
+  - how submissions route to dispatch@riverwaylogistics.com
+- Provide a short “What changed” summary in the PR/commit description.
+
+Before finalizing:
+- Run the dev server and visually verify each acceptance item.
+- Verify keyboard navigation for modal + accordions + buttons.
+- Verify the FMCSA link opens in a new tab and top bar stays visible while scrolling.

@@ -1,0 +1,159 @@
+```text
+You are a Replit coding agent with full Git access. Implement the website fixes from the “Website UX and Credibility Improvements” report in this repo (Vite + React + Tailwind). Keep it realistic (no full redesign), prioritize credibility + speed to action, and avoid heavy dependencies.
+
+DECISIONS ALREADY MADE (DO NOT ASK AGAIN)
+- Trust & Compliance gallery: use the real photos/videos I provided (they will be available in the Replit workspace).
+  - Images: IMG_7654.jpg, IMG_6927.jpg
+  - Logo: RIVERWAY LOGO FIXED .png
+  - Video: Untitled video (1).mp4
+- Docs section: “Available on request” (no PDFs to upload right now), but build the UI structure.
+- Hero image: current is fine, but if you can use one of the provided truck images as a more professional hero, do it (optimize file size).
+- QuoteForm: use Formspree (I already signed up).
+- Routing: keep it simple (single page with anchor links / sections).
+
+ENV VARS
+- Use Formspree endpoint from env var: VITE_FORMSPREE_ENDPOINT
+- If the env var is missing, the UI must show a clear fallback message and a mailto link to dispatch@riverwaylogistics.com.
+
+PRIMARY FILES / STRUCTURE
+- Refactor away from dumping everything into App.tsx.
+- Create small components under src/components/, e.g.:
+  - AuthorityBar.tsx
+  - Header.tsx (if needed)
+  - QuoteFormModal.tsx (or QuoteForm.tsx + Modal.tsx)
+  - Accordion.tsx (lightweight)
+  - TrustCompliance.tsx
+  - BackToTop.tsx
+- Keep Tailwind. Do not add big UI libraries.
+
+NON-NEGOTIABLE ACCEPTANCE CRITERIA (verify in browser before final commit)
+
+1) Persistent Authority Top Bar (sticky)
+- Add a thin dark “authority strip” above the header that stays visible while scrolling.
+- Display: “MC 1473682”, “DOT 3955747”, “Spring, TX”.
+- Include a link “FMCSA Snapshot” that opens in a new tab:
+  https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY
+- Must look clean on mobile (no wrapping into chaos; use compact layout).
+
+2) Hero CTAs + Hero Media
+- Update hero copy to be specific and non-generic:
+  - Texas-based, asset-based flatbed carrier
+  - Core lanes: Texas + Southeast (don’t overpromise nationwide)
+- Media:
+  - Prefer using one of the provided truck images as hero if it looks better than the current.
+  - Optimize hero media (compress, reasonable dimensions, < 250KB if possible).
+  - Add proper alt text.
+- Add TWO hero buttons (desktop + mobile):
+  a) “Book a Load” -> opens QuoteForm modal
+  b) “Drive With Us” -> scrolls to Drivers section
+- Buttons must have visible hover + focus-visible states.
+
+3) QuoteForm Modal (Formspree)
+- Create a modal that opens from “Book a Load”.
+- Close behaviors: X button, overlay click, ESC.
+- Must be accessible:
+  - Focus trap inside modal
+  - Focus returns to trigger on close
+  - All fields have labels
+- Fields (exactly these):
+  Name, Company, Email, Phone, Freight Type, Origin, Destination
+- Submit:
+  - POST to VITE_FORMSPREE_ENDPOINT
+  - Show success message in UI on 2xx
+  - Show error message + fallback mailto:dispatch@riverwaylogistics.com on failure
+- Add basic client-side validation: required fields + email format.
+
+4) Drivers Section Upgrade (more real, less generic)
+- Rewrite with concrete info:
+  - Minimum 1 year flatbed experience
+  - TX/SE runs
+  - Home time: most weekends (word it carefully: “most weekends”)
+  - Pay: “Pay details available on request” (keep it clean)
+- CTA button: “Apply Now”
+  - mailto:recruiting@riverwaylogistics.com
+  - Prefill subject: “Driver Application – Riverway”
+- Add “More Details” accordion (4–6 items) with smooth open/close:
+  Example items:
+  - Weekly settlements
+  - Direct dispatch communication
+  - No forced dispatch (if true; if unsure, phrase as “We work with you on routes”)
+  - Modern equipment expectations / safety-first
+  - Consistent lanes (TX/SE focus)
+  - Quick onboarding
+
+5) NEW “Trust & Compliance” Section
+Place after Capabilities/Services.
+
+A) Gallery (real media)
+- Create a horizontally scrollable gallery with CSS scroll-snap (NO slider library).
+- Use the provided images (and optionally 1 short video tile if it looks clean):
+  - IMG_7654.jpg
+  - IMG_6927.jpg
+  - Untitled video (1).mp4 (optional, only if it doesn’t hurt layout/perf; keep it muted, controls optional)
+- Each tile must have a short caption, e.g.:
+  - “Flatbed load secured and ready to roll.”
+  - “Texas-based flatbed operations.”
+- Mobile must be swipeable; desktop scroll should feel intentional.
+
+IMPORTANT: Move assets into sensible public paths:
+- public/images/trucks/...
+- public/video/... (if used)
+Rename files to web-safe names, e.g.:
+- riverway-truck-1.jpg
+- riverway-truck-2.jpg
+- riverway-yard.mp4
+Also compress images (use a simple local approach or library-free). If you can’t compress in Replit, at least resize and avoid huge loads.
+
+B) Collapsible Docs (Available on request)
+- Build an accordion or details/summary list for:
+  - W-9
+  - Insurance Certificate
+  - MC Authority
+  - Carrier Packet (optional)
+- Each expands to show:
+  - Status: “Available on request”
+  - CTA button: “Request via Email” -> mailto:dispatch@riverwaylogistics.com with subject “Carrier Docs Request – Riverway”
+- Do NOT fake PDFs. Keep it honest.
+
+6) Global Styling + Micro-Polish
+- Unify typography and spacing across sections:
+  - Consistent max width container
+  - Consistent section padding and gaps
+  - Headings scale (h1, h2, h3) and body text consistent
+- Add subtle hover states to cards/buttons (shadow, slight translate ok).
+- Ensure focus-visible rings for keyboard navigation.
+- Keep it blue-collar/simple (no flashy animations, no over-designed gradients).
+
+7) Back-to-top Button
+- Floating bottom-right.
+- Appears after user scrolls past ~50% page height.
+- Smooth scroll to top on click.
+
+KEEP IT SIMPLE (explicit)
+- Do not add routing. Keep single-page with anchor scrolling.
+- Keep dependencies minimal.
+- Avoid scope creep.
+
+DELIVERABLES
+- Implement all above in code with clean component structure.
+- Update any existing sections’ copy so it sounds like a real carrier (direct, specific, not corporate).
+- Ensure logo usage is clean:
+  - Use “RIVERWAY LOGO FIXED .png” where appropriate (header/footer).
+  - If the logo file name has spaces, rename to riverway-logo.png and update references.
+- Run dev server and verify each acceptance criterion.
+- Commit with clear messages (e.g., “Add authority bar + hero CTAs”, “Add QuoteForm modal (Formspree)”, “Add Trust & Compliance section”, etc.).
+- If helpful, add a short README note:
+  - Set VITE_FORMSPREE_ENDPOINT
+  - What the form does
+  - Fallback behavior
+
+FINAL CHECKLIST BEFORE YOU STOP
+- Authority bar visible + sticky + FMCSA link opens new tab
+- Hero shows 2 CTAs and looks good on mobile
+- Quote modal accessible and submits to Formspree env endpoint
+- Drivers section has “Apply Now” mailto + accordion works smoothly
+- Trust & Compliance gallery scroll-snap works + captions present
+- Docs list shows “Available on request” and has request mailto links
+- Back-to-top appears after scrolling and works
+- No broken imports, no console errors, no layout blowups on mobile
+```
