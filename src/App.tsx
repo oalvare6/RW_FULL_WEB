@@ -325,11 +325,13 @@ const LanesAndFreight = () => (
           </div>
         </div>
         <div className="mt-10 md:mt-0 relative">
-          <img 
-            src="/images/truck-coils.png" 
-            alt="Peterbilt flatbed truck with steel coils" 
-            className="rounded-lg shadow-lg"
-          />
+          <div className="bg-[#f1f5f9] rounded-lg p-6 shadow-lg">
+            <img 
+              src="/images/truck-coils.png" 
+              alt="Peterbilt flatbed truck with steel coils" 
+              className="w-full h-auto"
+            />
+          </div>
           <div className="absolute -bottom-6 -left-6 bg-slate-900 p-6 rounded shadow-xl hidden lg:block">
             <p className="text-white font-bold text-xl">100%</p>
             <p className="text-blue-200 text-sm">Asset-Based Reliability</p>
