@@ -18,30 +18,17 @@
       type="image/png"
     />
 
-    <!-- Tailwind CDN (OK for now, we can convert later) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
+    <!-- Font preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-    </style>
   </head>
 
   <body>
     <div id="root"></div>
-
-    <!-- ✅ Correct Vite entry point -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
