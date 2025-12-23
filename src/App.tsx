@@ -11,7 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-[40px] z-50">
+    <header className="bg-white border-b border-gray-200 sticky top-0 sm:top-[40px] z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
@@ -20,6 +20,8 @@ const Header = () => {
                 src="/images/logo.png" 
                 alt="Riverway Logistics" 
                 className="h-20 w-auto"
+                width="180"
+                height="80"
               />
             </a>
           </div>
@@ -53,7 +55,7 @@ const Header = () => {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-slate-900 p-2 focus:outline-none"
+              className="text-gray-600 hover:text-slate-900 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -68,28 +70,28 @@ const Header = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a 
               href="#services" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
+              className="block px-3 py-3 min-h-[44px] rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
               Services
             </a>
             <a 
               href="#lanes" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
+              className="block px-3 py-3 min-h-[44px] rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
               Lanes
             </a>
             <a 
               href="#drivers" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
+              className="block px-3 py-3 min-h-[44px] rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
               Drivers
             </a>
             <a 
               href="#contact" 
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
+              className="block px-3 py-3 min-h-[44px] rounded-md text-base font-medium text-gray-700 hover:text-slate-900 hover:bg-gray-50"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
@@ -97,14 +99,14 @@ const Header = () => {
             <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
               <a 
                 href="mailto:dispatch@riverwaylogistics.com" 
-                className="flex items-center justify-center gap-2 w-full text-slate-900 font-medium text-base bg-gray-50 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-center gap-2 w-full text-slate-900 font-medium text-base bg-gray-50 px-4 py-3 min-h-[44px] rounded-md hover:bg-gray-100 transition-colors"
               >
                 <Mail className="h-4 w-4" />
                 <span>Email Us</span>
               </a>
               <a 
                 href="tel:+18324770896" 
-                className="flex items-center justify-center gap-2 w-full text-white font-medium text-base bg-slate-900 px-4 py-3 rounded-md hover:bg-slate-800 transition-colors"
+                className="flex items-center justify-center gap-2 w-full text-white font-medium text-base bg-slate-900 px-4 py-3 min-h-[44px] rounded-md hover:bg-slate-800 transition-colors"
               >
                 <Phone className="h-4 w-4" />
                 <span>Call Now</span>
@@ -118,7 +120,7 @@ const Header = () => {
 };
 
 const AuthorityBanner = () => (
-  <div className="bg-slate-900 text-white py-2 sticky top-0 z-[60]">
+  <div className="bg-slate-900 text-white py-2 sm:sticky sm:top-0 z-[60]">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm tracking-wide">
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-2 sm:mb-0">
         <span className="flex items-center gap-2">
@@ -165,6 +167,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
         className="w-full h-full object-cover opacity-50"
         src="/images/flatbed.png"
         alt="Flatbed semi truck loaded with industrial cargo - Riverway Logistics"
+        width="1920"
+        height="1080"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/70 to-transparent mix-blend-multiply" />
     </div>
@@ -197,6 +201,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
       src="/images/logo-white.png" 
       alt="Riverway Logistics" 
       className="absolute bottom-6 right-6 h-20 w-auto opacity-80 hidden md:block"
+      loading="lazy"
+      width="180"
+      height="80"
     />
   </div>
 );
@@ -330,6 +337,9 @@ const LanesAndFreight = () => (
               src="/images/truck-coils.png" 
               alt="Peterbilt flatbed truck with steel coils" 
               className="w-full h-auto"
+              loading="lazy"
+              width="800"
+              height="500"
             />
           </div>
           <div className="absolute -bottom-6 -left-6 bg-slate-900 p-6 rounded shadow-xl hidden lg:block">

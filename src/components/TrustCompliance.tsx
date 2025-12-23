@@ -47,6 +47,9 @@ const TrustCompliance: React.FC = () => {
                     src={image.src} 
                     alt={image.caption}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="288"
+                    height="216"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
@@ -68,7 +71,7 @@ const TrustCompliance: React.FC = () => {
               <div key={doc.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
                 <button
                   onClick={() => toggleDoc(doc.id)}
-                  className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
+                  className="w-full flex items-center justify-between p-4 min-h-[48px] text-left hover:bg-gray-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
                   aria-expanded={openDoc === doc.id}
                 >
                   <div className="flex items-center gap-3">
