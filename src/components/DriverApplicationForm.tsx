@@ -35,9 +35,28 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
   const modalRef = useRef<HTMLDivElement>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
+  const resetForm = () => {
+    setStatus('idle');
+    setErrors({});
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      cdl_number: '',
+      cdl_state: '',
+      experience: '',
+      violations: '',
+      notes: '',
+      endorsements: []
+    });
+  };
+
   useEffect(() => {
-    if (isOpen && firstInputRef.current) {
-      firstInputRef.current.focus();
+    if (isOpen) {
+      resetForm();
+      if (firstInputRef.current) {
+        firstInputRef.current.focus();
+      }
       document.body.style.overflow = 'hidden';
     }
     return () => {
@@ -221,12 +240,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
     }
   };
 
-  const resetAndClose = () => {
-    setStatus('idle');
-    setErrors({});
-    onClose();
-  };
-
+  
   if (!isOpen) return null;
 
   return (
@@ -251,7 +265,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
             </h2>
           </div>
           <button
-            onClick={resetAndClose}
+            onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors p-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Close form"
           >
@@ -272,7 +286,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                 Thank you for your interest. Our recruiting team will review your application and contact you shortly.
               </p>
               <button
-                onClick={resetAndClose}
+                onClick={onClose}
                 className="bg-slate-800 text-white px-6 py-3 min-h-[44px] rounded-lg hover:bg-slate-700 transition-colors"
               >
                 Close
