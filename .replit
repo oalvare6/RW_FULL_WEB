@@ -46,3 +46,4 @@ publicDir = "dist"
 
 [userenv.shared]
 VITE_DRIVER_FORMSPREE_ENDPOINT = "https://formspree.io/f/xlgrbvnk"
+VITE_WEB3FORMS_DRIVER_KEY = "${WEB3FORMS_DRIVER_KEY}"
