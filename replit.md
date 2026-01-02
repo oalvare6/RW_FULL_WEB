@@ -32,15 +32,19 @@ The application uses a component-based architecture under `src/components/`:
 4. **Responsive Design:** Mobile-first with hamburger menu for navigation
 
 ### Form Handling
-- **Quote Form**: Freight quote submissions sent to Formspree endpoint
-  - Environment variable `VITE_FORMSPREE_ENDPOINT` configures the submission URL
-  - Fallback mailto link to `dispatch@riverwaylogistics.com` if Formspree unavailable
-- **Driver Application Form**: Driver recruitment applications sent to separate Formspree endpoint
-  - Environment variable `VITE_DRIVER_FORMSPREE_ENDPOINT` configures the submission URL
+- **Quote Form**: Freight quote submissions via Web3Forms API
+  - Environment variable `VITE_WEB3FORMS_QUOTE_KEY` stores the access key
+  - Validates: name, company, email format, 10-digit phone, freight type, origin/destination
+  - Phone auto-formats to (xxx) xxx-xxxx as user types
+  - Fallback mailto link to `dispatch@riverwaylogistics.com` if submission fails
+- **Driver Application Form**: Driver recruitment applications via Web3Forms API
+  - Environment variable `VITE_WEB3FORMS_DRIVER_KEY` stores the access key
   - Collects CDL info, experience, endorsements, and driving record
+  - Validates: all required fields, CDL state code, email format, 10-digit phone
   - Fallback mailto link to `recruiting@riverwaylogistics.com`
 - Both forms include validation states: idle, submitting, success, error
-- Both modals have full accessibility: focus trap, ESC to close, overlay click to close
+- Both forms reset to clean state when modal reopens
+- Both modals have full accessibility: focus trap, ESC to close, overlay click to close, 44px touch targets
 
 ### Static Assets
 - Images stored in `/public/images/` (logo, truck photos)
@@ -50,7 +54,7 @@ The application uses a component-based architecture under `src/components/`:
 ## External Dependencies
 
 ### Third-Party Services
-- **Formspree:** Form submission backend for quote requests. Requires `VITE_FORMSPREE_ENDPOINT` environment variable with the form endpoint URL (e.g., `https://formspree.io/f/YOUR_FORM_ID`)
+- **Web3Forms:** Form submission backend for both quote requests and driver applications. Free tier with no domain restrictions. Access keys stored as environment variables (`VITE_WEB3FORMS_QUOTE_KEY`, `VITE_WEB3FORMS_DRIVER_KEY`)
 
 ### External Links
 - **FMCSA Snapshot:** Links to federal carrier verification at `https://safer.fmcsa.dot.gov/query.asp?...`
