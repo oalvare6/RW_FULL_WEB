@@ -36,7 +36,7 @@ const Header = () => {
           
           <div className="hidden md:flex items-center gap-3">
             <a 
-              href="mailto:dispatch@riverwaylogistics.com" 
+              href="mailto:operations@riverwaylogistics.com" 
               className="flex items-center gap-2 text-slate-900 font-medium text-sm border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 transition-colors"
             >
               <Mail className="h-4 w-4" />
@@ -98,7 +98,7 @@ const Header = () => {
             </a>
             <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
               <a 
-                href="mailto:dispatch@riverwaylogistics.com" 
+                href="mailto:operations@riverwaylogistics.com" 
                 className="flex items-center justify-center gap-2 w-full text-slate-900 font-medium text-base bg-gray-50 px-4 py-3 min-h-[44px] rounded-md hover:bg-gray-100 transition-colors"
               >
                 <Mail className="h-4 w-4" />
@@ -136,11 +136,11 @@ const AuthorityBanner = () => (
           Spring, TX
         </span>
         <a 
-          href="mailto:dispatch@riverwaylogistics.com" 
+          href="mailto:operations@riverwaylogistics.com" 
           className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors"
         >
           <Mail className="h-4 w-4" />
-          dispatch@riverwaylogistics.com
+          operations@riverwaylogistics.com
         </a>
       </div>
       <a
@@ -472,7 +472,7 @@ const Contact = () => (
           </div>
           <h3 className="text-lg font-medium text-gray-900">Email</h3>
           <p className="mt-2 text-gray-600 text-center">Dispatch & Sales</p>
-          <a href="mailto:dispatch@riverwaylogistics.com" className="mt-2 text-blue-700 font-medium hover:underline">dispatch@riverwaylogistics.com</a>
+          <a href="mailto:operations@riverwaylogistics.com" className="mt-2 text-blue-700 font-medium hover:underline">operations@riverwaylogistics.com</a>
         </div>
 
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm">
@@ -511,11 +511,11 @@ const Footer = () => (
           <h4 className="text-white font-semibold mb-4">Quick Contact</h4>
           <div className="space-y-3">
             <a 
-              href="mailto:dispatch@riverwaylogistics.com" 
+              href="mailto:operations@riverwaylogistics.com" 
               className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors"
             >
               <Mail className="h-4 w-4" />
-              dispatch@riverwaylogistics.com
+              operations@riverwaylogistics.com
             </a>
             <a 
               href="tel:+18324770896" 

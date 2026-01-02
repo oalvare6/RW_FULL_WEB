@@ -493,8 +493,8 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
               {status === 'error' && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
                   Something went wrong. Please try again or email us at{' '}
-                  <a href="mailto:recruiting@riverwaylogistics.com" className="underline font-medium">
-                    recruiting@riverwaylogistics.com
+                  <a href="mailto:operations@riverwaylogistics.com" className="underline font-medium">
+                    operations@riverwaylogistics.com
                   </a>
                 </div>
               )}

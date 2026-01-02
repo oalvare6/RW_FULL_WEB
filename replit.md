@@ -36,12 +36,12 @@ The application uses a component-based architecture under `src/components/`:
   - Environment variable `VITE_WEB3FORMS_QUOTE_KEY` stores the access key
   - Validates: name, company, email format, 10-digit phone, freight type, origin/destination
   - Phone auto-formats to (xxx) xxx-xxxx as user types
-  - Fallback mailto link to `dispatch@riverwaylogistics.com` if submission fails
+  - Fallback mailto link to `operations@riverwaylogistics.com` if submission fails
 - **Driver Application Form**: Driver recruitment applications via Web3Forms API
   - Environment variable `VITE_WEB3FORMS_DRIVER_KEY` stores the access key
   - Collects CDL info, experience, endorsements, and driving record
   - Validates: all required fields, CDL state code, email format, 10-digit phone
-  - Fallback mailto link to `recruiting@riverwaylogistics.com`
+  - Fallback mailto link to `operations@riverwaylogistics.com`
 - Both forms include validation states: idle, submitting, success, error
 - Both forms reset to clean state when modal reopens
 - Both modals have full accessibility: focus trap, ESC to close, overlay click to close, 44px touch targets
@@ -61,8 +61,7 @@ The application uses a component-based architecture under `src/components/`:
 - **Google Fonts:** Inter font family loaded from Google Fonts CDN
 
 ### Email Integration
-- Dispatch inquiries: `dispatch@riverwaylogistics.com`
-- Driver recruiting: `recruiting@riverwaylogistics.com`
+- All inquiries: `operations@riverwaylogistics.com`
 
 ### Build Tools
 - Vite 5.x for development server and production builds

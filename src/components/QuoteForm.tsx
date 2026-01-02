@@ -388,7 +388,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                 <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-red-700 text-sm mb-2">There was an issue submitting your request.</p>
                   <a 
-                    href="mailto:dispatch@riverwaylogistics.com?subject=Quote Request"
+                    href="mailto:operations@riverwaylogistics.com?subject=Quote Request"
                     className="text-red-700 underline text-sm font-medium hover:text-red-800"
                   >
                     Click here to email us directly

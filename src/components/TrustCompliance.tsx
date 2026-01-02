@@ -88,7 +88,7 @@ const TrustCompliance: React.FC = () => {
                   <div className="p-4 pt-0 border-t border-gray-100">
                     <p className="text-gray-600 text-sm mb-3">{doc.description}</p>
                     <a
-                      href="mailto:dispatch@riverwaylogistics.com?subject=Document Request - Riverway Logistics"
+                      href="mailto:operations@riverwaylogistics.com?subject=Document Request - Riverway Logistics"
                       className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-800 transition-colors"
                     >
                       <Mail className="h-4 w-4" />
