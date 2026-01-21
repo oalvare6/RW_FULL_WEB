@@ -307,7 +307,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="John Smith"
                     autoComplete="name"
                   />
@@ -323,7 +323,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="(555) 123-4567"
                     autoComplete="tel"
                   />
@@ -341,7 +341,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   placeholder="john@example.com"
                   autoComplete="email"
                 />
@@ -359,7 +359,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="cdl_number"
                     value={formData.cdl_number}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.cdl_number ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.cdl_number ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="Enter CDL number"
                   />
                   {errors.cdl_number && <p className="text-red-600 text-xs mt-1 font-medium">{errors.cdl_number}</p>}
@@ -375,7 +375,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     value={formData.cdl_state}
                     onChange={handleInputChange}
                     maxLength={2}
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all uppercase ${errors.cdl_state ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all uppercase ${errors.cdl_state ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="TX"
                   />
                   {errors.cdl_state && <p className="text-red-600 text-xs mt-1 font-medium">{errors.cdl_state}</p>}
@@ -391,7 +391,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="experience"
                   value={formData.experience}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.experience ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.experience ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
                   <option value="">Select experience</option>
                   <option value="1-2 years">1-2 years</option>
@@ -463,7 +463,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="violations"
                   value={formData.violations}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.violations ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all ${errors.violations ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
                   <option value="">Select</option>
                   <option value="No">No</option>
@@ -482,7 +482,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   value={formData.notes}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-all resize-none"
                   placeholder="Tell us about your experience, any violations/accidents to explain, or questions..."
                 />
               </div>

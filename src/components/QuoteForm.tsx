@@ -273,7 +273,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     placeholder="John Smith"
                     autoComplete="name"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.name && <p className="text-red-600 text-xs mt-1 font-medium">{errors.name}</p>}
                 </div>
@@ -287,7 +287,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     placeholder="Company name"
                     autoComplete="organization"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.company ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.company ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.company && <p className="text-red-600 text-xs mt-1 font-medium">{errors.company}</p>}
                 </div>
@@ -304,7 +304,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     placeholder="you@company.com"
                     autoComplete="email"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.email && <p className="text-red-600 text-xs mt-1 font-medium">{errors.email}</p>}
                 </div>
@@ -318,7 +318,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     placeholder="(555) 123-4567"
                     autoComplete="tel"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.phone && <p className="text-red-600 text-xs mt-1 font-medium">{errors.phone}</p>}
                 </div>
@@ -331,7 +331,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                   name="freightType"
                   value={formData.freightType}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.freightType ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.freightType ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
                   <option value="">Select freight type</option>
                   <option value="steel">Steel Products</option>
@@ -353,7 +353,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     value={formData.origin}
                     onChange={handleChange}
                     placeholder="Houston, TX"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.origin ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.origin ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.origin && <p className="text-red-600 text-xs mt-1 font-medium">{errors.origin}</p>}
                 </div>
@@ -366,7 +366,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     value={formData.destination}
                     onChange={handleChange}
                     placeholder="Atlanta, GA"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors ${errors.destination ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.destination ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.destination && <p className="text-red-600 text-xs mt-1 font-medium">{errors.destination}</p>}
                 </div>
@@ -381,7 +381,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   rows={3}
                   placeholder="Weight, dimensions, pickup date, special requirements..."
-                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors resize-none"
                 />
               </div>
 
