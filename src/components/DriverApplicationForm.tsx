@@ -245,7 +245,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
 
   return (
     <div
-      className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-brand-navy-dark/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
       onClick={handleOverlayClick}
       role="dialog"
       aria-modal="true"
@@ -253,20 +253,21 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
+        className="bg-brand-cream shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-scale-in"
       >
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-              <Truck className="h-5 w-5 text-amber-600" />
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b-4 border-brand-orange bg-brand-navy">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-brand-orange flex items-center justify-center">
+              <Truck className="h-6 w-6 text-white" />
             </div>
-            <h2 id="driver-form-title" className="text-xl font-bold text-gray-900">
-              Driver Application
+            <h2 id="driver-form-title" className="font-display text-2xl text-white tracking-wide">
+              DRIVER APPLICATION
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors p-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="text-gray-400 hover:text-white hover:bg-white/10 transition-colors p-1 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Close form"
           >
             <X className="h-6 w-6" />
@@ -276,18 +277,18 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
         <div className="p-6">
           {status === 'success' ? (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="w-20 h-20 bg-brand-navy flex items-center justify-center mx-auto mb-6">
+                <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Application Submitted!</h3>
-              <p className="text-gray-600 mb-4">
+              <h3 className="font-display text-2xl text-brand-charcoal mb-2 tracking-wide">APPLICATION SUBMITTED!</h3>
+              <p className="text-gray-600 mb-6">
                 Thank you for your interest. Our recruiting team will review your application and contact you shortly.
               </p>
               <button
                 onClick={onClose}
-                className="bg-slate-800 text-white px-6 py-3 min-h-[44px] rounded-lg hover:bg-slate-700 transition-colors"
+                className="bg-brand-navy text-white px-8 py-3 min-h-[48px] font-bold uppercase tracking-wider hover:bg-brand-navy-light transition-colors"
               >
                 Close
               </button>
@@ -296,7 +297,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="driver-name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="driver-name" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                     Full Name *
                   </label>
                   <input
@@ -306,14 +307,14 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="John Smith"
                     autoComplete="name"
                   />
-                  {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name}</p>}
+                  {errors.name && <p className="text-red-600 text-xs mt-1 font-medium">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="driver-phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="driver-phone" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                     Phone Number *
                   </label>
                   <input
@@ -322,16 +323,16 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="(555) 123-4567"
                     autoComplete="tel"
                   />
-                  {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone}</p>}
+                  {errors.phone && <p className="text-red-600 text-xs mt-1 font-medium">{errors.phone}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="driver-email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="driver-email" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                   Email Address *
                 </label>
                 <input
@@ -340,16 +341,16 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   placeholder="john@example.com"
                   autoComplete="email"
                 />
-                {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email}</p>}
+                {errors.email && <p className="text-red-600 text-xs mt-1 font-medium">{errors.email}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="driver-cdl" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="driver-cdl" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                     CDL Number *
                   </label>
                   <input
@@ -358,13 +359,13 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     name="cdl_number"
                     value={formData.cdl_number}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.cdl_number ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.cdl_number ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="Enter CDL number"
                   />
-                  {errors.cdl_number && <p className="text-red-600 text-xs mt-1">{errors.cdl_number}</p>}
+                  {errors.cdl_number && <p className="text-red-600 text-xs mt-1 font-medium">{errors.cdl_number}</p>}
                 </div>
                 <div>
-                  <label htmlFor="driver-cdl-state" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="driver-cdl-state" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                     CDL State *
                   </label>
                   <input
@@ -374,15 +375,15 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                     value={formData.cdl_state}
                     onChange={handleInputChange}
                     maxLength={2}
-                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all uppercase ${errors.cdl_state ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all uppercase ${errors.cdl_state ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                     placeholder="TX"
                   />
-                  {errors.cdl_state && <p className="text-red-600 text-xs mt-1">{errors.cdl_state}</p>}
+                  {errors.cdl_state && <p className="text-red-600 text-xs mt-1 font-medium">{errors.cdl_state}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="driver-experience" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="driver-experience" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                   Years of Flatbed Experience *
                 </label>
                 <select
@@ -390,7 +391,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="experience"
                   value={formData.experience}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.experience ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.experience ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
                   <option value="">Select experience</option>
                   <option value="1-2 years">1-2 years</option>
@@ -398,63 +399,63 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   <option value="5-10 years">5-10 years</option>
                   <option value="10+ years">10+ years</option>
                 </select>
-                {errors.experience && <p className="text-red-600 text-xs mt-1">{errors.experience}</p>}
+                {errors.experience && <p className="text-red-600 text-xs mt-1 font-medium">{errors.experience}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-brand-charcoal mb-2 uppercase tracking-wide">
                   Endorsements (check all that apply)
                 </label>
                 <div className="grid grid-cols-2 gap-3">
-                  <label className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer min-h-[44px]">
+                  <label className="flex items-center gap-3 p-3 bg-white border-2 border-gray-200 hover:border-brand-navy cursor-pointer min-h-[48px] transition-colors">
                     <input 
                       type="checkbox" 
                       name="endorsements" 
                       value="Hazmat" 
                       checked={formData.endorsements.includes('Hazmat')}
                       onChange={handleCheckboxChange}
-                      className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" 
+                      className="w-5 h-5 border-2 border-gray-300 text-brand-navy focus:ring-brand-navy accent-brand-navy" 
                     />
-                    <span className="text-sm text-gray-700">Hazmat (H)</span>
+                    <span className="text-sm text-brand-charcoal font-medium">Hazmat (H)</span>
                   </label>
-                  <label className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer min-h-[44px]">
+                  <label className="flex items-center gap-3 p-3 bg-white border-2 border-gray-200 hover:border-brand-navy cursor-pointer min-h-[48px] transition-colors">
                     <input 
                       type="checkbox" 
                       name="endorsements" 
                       value="Tanker" 
                       checked={formData.endorsements.includes('Tanker')}
                       onChange={handleCheckboxChange}
-                      className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" 
+                      className="w-5 h-5 border-2 border-gray-300 text-brand-navy focus:ring-brand-navy accent-brand-navy" 
                     />
-                    <span className="text-sm text-gray-700">Tanker (N)</span>
+                    <span className="text-sm text-brand-charcoal font-medium">Tanker (N)</span>
                   </label>
-                  <label className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer min-h-[44px]">
+                  <label className="flex items-center gap-3 p-3 bg-white border-2 border-gray-200 hover:border-brand-navy cursor-pointer min-h-[48px] transition-colors">
                     <input 
                       type="checkbox" 
                       name="endorsements" 
                       value="Doubles/Triples" 
                       checked={formData.endorsements.includes('Doubles/Triples')}
                       onChange={handleCheckboxChange}
-                      className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" 
+                      className="w-5 h-5 border-2 border-gray-300 text-brand-navy focus:ring-brand-navy accent-brand-navy" 
                     />
-                    <span className="text-sm text-gray-700">Doubles/Triples (T)</span>
+                    <span className="text-sm text-brand-charcoal font-medium">Doubles/Triples (T)</span>
                   </label>
-                  <label className="flex items-center gap-2 p-2 rounded hover:bg-gray-50 cursor-pointer min-h-[44px]">
+                  <label className="flex items-center gap-3 p-3 bg-white border-2 border-gray-200 hover:border-brand-navy cursor-pointer min-h-[48px] transition-colors">
                     <input 
                       type="checkbox" 
                       name="endorsements" 
                       value="TWIC" 
                       checked={formData.endorsements.includes('TWIC')}
                       onChange={handleCheckboxChange}
-                      className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500" 
+                      className="w-5 h-5 border-2 border-gray-300 text-brand-navy focus:ring-brand-navy accent-brand-navy" 
                     />
-                    <span className="text-sm text-gray-700">TWIC Card</span>
+                    <span className="text-sm text-brand-charcoal font-medium">TWIC Card</span>
                   </label>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="driver-violations" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="driver-violations" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                   Any accidents or violations in the last 3 years? *
                 </label>
                 <select
@@ -462,17 +463,17 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   name="violations"
                   value={formData.violations}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all ${errors.violations ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all ${errors.violations ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
                   <option value="">Select</option>
                   <option value="No">No</option>
                   <option value="Yes">Yes (explain below)</option>
                 </select>
-                {errors.violations && <p className="text-red-600 text-xs mt-1">{errors.violations}</p>}
+                {errors.violations && <p className="text-red-600 text-xs mt-1 font-medium">{errors.violations}</p>}
               </div>
 
               <div>
-                <label htmlFor="driver-notes" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="driver-notes" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">
                   Additional Information
                 </label>
                 <textarea
@@ -481,7 +482,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
                   value={formData.notes}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-0 focus:border-brand-navy outline-none transition-all resize-none"
                   placeholder="Tell us about your experience, any violations/accidents to explain, or questions..."
                 />
               </div>
@@ -491,9 +492,9 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
               </p>
 
               {status === 'error' && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 text-sm">
                   Something went wrong. Please try again or email us at{' '}
-                  <a href="mailto:operations@riverwaylogistics.com" className="underline font-medium">
+                  <a href="mailto:operations@riverwaylogistics.com" className="underline font-bold">
                     operations@riverwaylogistics.com
                   </a>
                 </div>
@@ -502,7 +503,7 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full bg-amber-500 text-white py-3 min-h-[48px] rounded-lg font-semibold hover:bg-amber-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-glow w-full bg-brand-orange text-white py-4 min-h-[52px] font-bold uppercase tracking-wider hover:bg-brand-orange-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? 'Submitting...' : 'Submit Application'}
               </button>

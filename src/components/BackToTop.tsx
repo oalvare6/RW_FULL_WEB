@@ -30,10 +30,10 @@ const BackToTop: React.FC = () => {
   return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-50 p-3 bg-slate-900 text-white rounded-full shadow-lg hover:bg-slate-800 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+      className="fixed bottom-6 right-6 z-50 p-4 bg-brand-navy text-white shadow-lg hover:bg-brand-navy-light hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2"
       aria-label="Back to top"
     >
-      <ChevronUp className="h-5 w-5" />
+      <ChevronUp className="h-5 w-5" strokeWidth={3} />
     </button>
   );
 };
