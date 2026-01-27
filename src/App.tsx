@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Truck, MapPin, ShieldCheck, Phone, Mail, FileText, Navigation, Info, Menu, X, ExternalLink, ChevronDown } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Phone, Mail, FileText, Navigation, Info, Menu, X, ExternalLink, ChevronDown, ArrowLeftRight, Plus } from "lucide-react";
 import QuoteForm from "./components/QuoteForm";
 import DriverApplicationForm from "./components/DriverApplicationForm";
 import BackToTop from "./components/BackToTop";
@@ -244,15 +244,21 @@ const Overview = () => (
             <h3 className="font-display text-2xl text-brand-charcoal mb-4 tracking-wide">CORE LANES</h3>
             <ul className="space-y-3">
               <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-8 w-8 bg-black text-white text-sm font-bold mr-3">→</span>
+                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <ArrowLeftRight className="h-5 w-5" />
+                </span>
                 <span className="font-medium">Houston ↔ Georgia</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-8 w-8 bg-black text-white text-sm font-bold mr-3">→</span>
+                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <ArrowLeftRight className="h-5 w-5" />
+                </span>
                 <span className="font-medium">Houston ↔ Midland, TX</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-8 w-8 bg-black text-white text-sm font-bold mr-3">+</span>
+                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <Plus className="h-5 w-5" />
+                </span>
                 <span className="font-medium">Southeast Coverage</span>
               </li>
             </ul>
