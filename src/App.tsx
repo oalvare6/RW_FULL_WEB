@@ -4,6 +4,7 @@ import QuoteForm from "./components/QuoteForm";
 import DriverApplicationForm from "./components/DriverApplicationForm";
 import BackToTop from "./components/BackToTop";
 import TrustCompliance from "./components/TrustCompliance";
+import QroBadge from "./components/QroBadge";
 
 // --- Components ---
 
@@ -579,6 +580,25 @@ const Footer = () => (
     
     {/* Top accent line */}
     <div className="absolute top-0 left-0 right-0 h-1 bg-brand-navy" />
+
+    {/* QRO credit */}
+    <div className="relative z-10 border-t border-white/5 py-4">
+      <div className="flex justify-center">
+        <a
+          href="https://qronnect.pro"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors"
+        >
+          <img
+            src="/assets/qro-logo.png"
+            alt="QRO"
+            className="h-5 w-auto opacity-70"
+          />
+          <span className="text-xs">Site by QRO</span>
+        </a>
+      </div>
+    </div>
   </footer>
 );
 
@@ -600,6 +620,7 @@ const App = () => {
       </main>
       <Footer />
       <BackToTop />
+      <QroBadge />
       <QuoteForm isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
       <DriverApplicationForm isOpen={isDriverModalOpen} onClose={() => setIsDriverModalOpen(false)} />
     </div>
