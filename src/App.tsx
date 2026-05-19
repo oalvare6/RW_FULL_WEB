@@ -1,116 +1,128 @@
 import React, { useState } from "react";
-import { Truck, MapPin, ShieldCheck, Phone, Mail, FileText, Navigation, Info, Menu, X, ExternalLink, ChevronDown, ArrowLeftRight, Plus } from "lucide-react";
+import {
+  BadgeCheck,
+  CheckCircle2,
+  ChevronDown,
+  Clock3,
+  ExternalLink,
+  FileCheck2,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  Route,
+  ShieldCheck,
+  Truck,
+  X,
+} from "lucide-react";
 import QuoteForm from "./components/QuoteForm";
 import DriverApplicationForm from "./components/DriverApplicationForm";
 import BackToTop from "./components/BackToTop";
 import TrustCompliance from "./components/TrustCompliance";
-import QroBadge from "./components/QroBadge";
 
-// --- Components ---
+const PHONE_HREF = "tel:+18324770896";
+const EMAIL_HREF = "mailto:operations@riverwaylogistics.com";
+const FMCSA_URL =
+  "https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY";
+
+const navLinks = [
+  { label: "Services", href: "#services" },
+  { label: "Lanes", href: "#lanes" },
+  { label: "Drivers", href: "#drivers" },
+  { label: "Contact", href: "#contact" },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-brand-cream/95 backdrop-blur-md border-b border-brand-navy/10 sticky top-0 sm:top-[40px] z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
-          <div className="flex items-center">
-            <a href="#" className="flex-shrink-0 flex items-center">
-              <img 
-                src="/images/logo.png" 
-                alt="Riverway Logistics" 
-                className="h-16 w-auto"
-                width="180"
-                height="80"
-              />
-            </a>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-10 items-center">
-            <a href="#services" className="text-brand-charcoal hover:text-brand-navy text-sm font-semibold tracking-wide uppercase transition-colors">Services</a>
-            <a href="#lanes" className="text-brand-charcoal hover:text-brand-navy text-sm font-semibold tracking-wide uppercase transition-colors">Lanes</a>
-            <a href="#drivers" className="text-brand-charcoal hover:text-brand-navy text-sm font-semibold tracking-wide uppercase transition-colors">Drivers</a>
-            <a href="#contact" className="text-brand-charcoal hover:text-brand-navy text-sm font-semibold tracking-wide uppercase transition-colors">Contact</a>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-3">
-            <a 
-              href="mailto:operations@riverwaylogistics.com" 
-              className="flex items-center gap-2 text-brand-charcoal font-semibold text-sm border-2 border-brand-navy px-5 py-2.5 hover:bg-brand-navy hover:text-white transition-all"
-            >
-              <Mail className="h-4 w-4" />
-              <span>Email Us</span>
-            </a>
-            <a 
-              href="tel:+18324770896" 
-              className="btn-glow flex items-center gap-2 text-white font-bold text-sm bg-brand-orange px-5 py-2.5 hover:bg-brand-orange-light transition-all"
-            >
-              <Phone className="h-4 w-4" />
-              <span>Call Now</span>
-            </a>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#" className="flex min-w-0 items-center" aria-label="Riverway Logistics home">
+          <img
+            src="/images/logo.png"
+            alt="Riverway Logistics"
+            className="h-11 w-auto sm:h-14"
+            width="180"
+            height="67"
+          />
+        </a>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-brand-charcoal hover:text-brand-navy min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy rounded"
-              aria-label="Toggle menu"
+        <nav className="hidden items-center gap-9 lg:flex" aria-label="Primary navigation">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-bold uppercase tracking-[0.12em] text-brand-slate transition-colors hover:text-brand-navy"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href={FMCSA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-l border-slate-200 pl-4 text-right text-[11px] font-bold uppercase leading-tight tracking-[0.12em] text-brand-navy hover:text-brand-orange"
+          >
+            <span className="block">MC: 1473682 | DOT: 3955747</span>
+            <span className="mt-1 flex items-center justify-end gap-1 text-[10px] font-semibold text-brand-slate">
+              FMCSA Snapshot <ExternalLink className="h-3 w-3" />
+            </span>
+          </a>
+          <a
+            href={PHONE_HREF}
+            className="btn-glow inline-flex min-h-[44px] items-center gap-2 rounded-md bg-brand-orange px-5 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+          >
+            <Phone className="h-4 w-4" />
+            Call Now
+          </a>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-slate-200 text-brand-navy transition-colors hover:border-brand-navy hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy lg:hidden"
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-brand-cream border-t border-brand-navy/10 shadow-xl absolute w-full left-0">
-          <div className="px-4 pt-4 pb-6 space-y-2">
-            <a 
-              href="#services" 
-              className="block px-4 py-3 min-h-[44px] text-base font-semibold text-brand-charcoal hover:text-brand-navy hover:bg-brand-navy/5 uppercase tracking-wide"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-            </a>
-            <a 
-              href="#lanes" 
-              className="block px-4 py-3 min-h-[44px] text-base font-semibold text-brand-charcoal hover:text-brand-navy hover:bg-brand-navy/5 uppercase tracking-wide"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Lanes
-            </a>
-            <a 
-              href="#drivers" 
-              className="block px-4 py-3 min-h-[44px] text-base font-semibold text-brand-charcoal hover:text-brand-navy hover:bg-brand-navy/5 uppercase tracking-wide"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Drivers
-            </a>
-            <a 
-              href="#contact" 
-              className="block px-4 py-3 min-h-[44px] text-base font-semibold text-brand-charcoal hover:text-brand-navy hover:bg-brand-navy/5 uppercase tracking-wide"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </a>
-            <div className="mt-6 pt-4 border-t border-brand-navy/10 space-y-3">
-              <a 
-                href="mailto:operations@riverwaylogistics.com" 
-                className="flex items-center justify-center gap-2 w-full text-brand-charcoal font-semibold text-base border-2 border-brand-navy px-4 py-3 min-h-[48px] hover:bg-brand-navy hover:text-white transition-all"
+        <div className="absolute left-0 top-full w-full border-t border-slate-200 bg-white shadow-xl lg:hidden">
+          <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6">
+            <nav className="grid gap-2" aria-label="Mobile navigation">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="rounded-md px-3 py-3 text-base font-bold uppercase tracking-[0.12em] text-brand-charcoal transition-colors hover:bg-slate-50 hover:text-brand-navy"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <a
+                href={FMCSA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-3 text-sm font-bold text-brand-navy"
               >
-                <Mail className="h-4 w-4" />
-                <span>Email Us</span>
+                <span>MC: 1473682 | DOT: 3955747</span>
+                <ExternalLink className="h-4 w-4" />
               </a>
-              <a 
-                href="tel:+18324770896" 
-                className="flex items-center justify-center gap-2 w-full text-white font-bold text-base bg-brand-orange px-4 py-3 min-h-[48px] hover:bg-brand-orange-light transition-all"
+              <a
+                href={PHONE_HREF}
+                className="mt-4 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-md bg-brand-orange px-5 py-3 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-lg shadow-orange-500/20 transition-colors hover:bg-brand-orange-light"
               >
                 <Phone className="h-4 w-4" />
-                <span>Call Now</span>
+                Call Now
               </a>
             </div>
           </div>
@@ -120,40 +132,25 @@ const Header = () => {
   );
 };
 
-const AuthorityBanner = () => (
-  <div className="bg-brand-navy text-white py-2.5 sm:sticky sm:top-0 z-[60]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm tracking-wider">
-      <div className="flex flex-wrap justify-center gap-5 sm:gap-8 mb-2 sm:mb-0">
-        <span className="flex items-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-brand-orange" />
-          <span className="font-semibold">MC: 1473682</span>
-        </span>
-        <span className="flex items-center gap-2">
-          <FileText className="h-4 w-4 text-brand-orange" />
-          <span className="font-semibold">DOT: 3955747</span>
-        </span>
-        <span className="flex items-center gap-2">
-          <MapPin className="h-4 w-4 text-brand-orange" />
-          <span>Spring, TX</span>
-        </span>
-        <a 
-          href="mailto:operations@riverwaylogistics.com" 
-          className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-        >
-          <Mail className="h-4 w-4" />
-          operations@riverwaylogistics.com
-        </a>
-      </div>
-      <a
-        href="https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 text-white/80 hover:text-white transition-colors font-semibold"
-      >
-        <span>FMCSA Snapshot</span>
-        <ExternalLink className="h-3 w-3" />
-      </a>
-    </div>
+const SectionIntro = ({
+  eyebrow,
+  title,
+  body,
+  align = "left",
+}: {
+  eyebrow: string;
+  title: React.ReactNode;
+  body?: string;
+  align?: "left" | "center";
+}) => (
+  <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.22em] text-brand-orange">
+      {eyebrow}
+    </p>
+    <h2 className="font-display text-3xl font-extrabold leading-tight text-brand-charcoal sm:text-4xl lg:text-5xl">
+      {title}
+    </h2>
+    {body && <p className="mt-5 text-base leading-8 text-brand-slate sm:text-lg">{body}</p>}
   </div>
 );
 
@@ -162,203 +159,211 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
-  <div className="relative bg-brand-navy-dark hero-clip grain-overlay overflow-hidden">
-    <div className="absolute inset-0">
-      <img
-        className="w-full h-full object-cover opacity-30"
-        src="/images/flatbed.png"
-        alt="Flatbed semi truck loaded with industrial cargo - Riverway Logistics"
-        width="1920"
-        height="1080"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-dark via-brand-navy-dark/80 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-dark/60 to-transparent" />
-    </div>
-    <div className="relative max-w-7xl mx-auto py-28 px-4 sm:py-36 lg:py-44 sm:px-6 lg:px-8">
-      <div className="max-w-3xl">
-        <p className="animate-fade-up text-brand-orange font-semibold tracking-[0.2em] uppercase text-sm mb-4">
-          Asset-Based Flatbed Carrier
+  <section className="relative isolate min-h-[680px] overflow-hidden bg-brand-navy-dark">
+    <img
+      className="absolute inset-0 h-full w-full object-cover object-[64%_center]"
+      src="/images/hero-flatbed-pipes.png"
+      alt="Clean Peterbilt flatbed loaded with steel pipes on a sunny highway"
+      width="1280"
+      height="896"
+    />
+    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-brand-navy-dark via-brand-navy-dark/78 to-brand-navy-dark/5 lg:w-[72%]" />
+    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-navy-dark/45 to-transparent" />
+
+    <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+      <div className="w-full min-w-0 max-w-3xl pt-10">
+        <p className="mb-5 inline-flex max-w-full rounded-md border border-white/20 bg-white/10 px-4 py-2 text-left text-[11px] font-extrabold uppercase leading-5 tracking-[0.18em] text-brand-orange backdrop-blur sm:text-xs sm:tracking-[0.22em]">
+          Asset-based flatbed motor carrier
         </p>
-        <h1 className="animate-fade-up animation-delay-100 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-wide">
-          TEXAS-BASED<br />
-          <span className="text-brand-orange">FLATBED</span> CARRIER
+        <h1 className="font-display max-w-[11ch] text-[2.35rem] font-black leading-[1.05] text-white min-[420px]:text-5xl sm:max-w-none sm:text-6xl lg:text-7xl">
+          Texas-Based Flatbed Carrier
         </h1>
-        <p className="animate-fade-up animation-delay-200 mt-8 text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
-          Riverway Logistics specializes in steel, pipe, and industrial freight. 
-          Consistent lanes between Houston, Georgia, and the Permian Basin.
+        <p className="mt-7 max-w-2xl break-words text-base font-medium leading-8 text-slate-100 sm:text-lg lg:text-xl">
+          Specializing in steel, pipe, and industrial freight. Consistent lanes between Houston,
+          Georgia, and the Permian Basin.
         </p>
-        <div className="animate-fade-up animation-delay-300 mt-10 flex flex-col sm:flex-row gap-4">
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <button
+            type="button"
             onClick={onOpenQuote}
-            className="btn-glow flex items-center justify-center px-10 py-4 text-base font-bold uppercase tracking-wider text-white bg-brand-orange hover:bg-brand-orange-light transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy-dark"
+            className="btn-glow inline-flex min-h-[54px] w-full items-center justify-center rounded-md bg-brand-orange px-8 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white shadow-xl shadow-orange-500/25 transition-colors hover:bg-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy-dark sm:w-auto"
           >
             Book a Load
           </button>
           <a
             href="#drivers"
-            className="flex items-center justify-center px-10 py-4 border-2 border-white text-base font-bold uppercase tracking-wider text-white hover:bg-white hover:text-brand-navy-dark transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy-dark"
+            className="inline-flex min-h-[54px] w-full items-center justify-center rounded-md border-2 border-white px-8 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-white hover:text-brand-navy-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy-dark sm:w-auto"
           >
             Drive With Us
           </a>
         </div>
-      </div>
-    </div>
-    
-    {/* Bottom accent stripe */}
-    <div className="absolute bottom-0 left-0 right-0 h-2 bg-brand-navy" />
-  </div>
-);
 
-const Overview = () => (
-  <section className="py-24 lg:py-32 bg-brand-cream relative">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center mb-20">
-        <p className="animate-fade-up text-brand-navy font-bold tracking-[0.2em] uppercase text-sm mb-4">Company Profile</p>
-        <h2 className="animate-fade-up animation-delay-100 font-display text-4xl sm:text-5xl lg:text-6xl text-brand-charcoal leading-tight">
-          LEGITIMATE, COMPLIANCE-DRIVEN<br />
-          <span className="text-brand-navy">CARRIER</span>
-        </h2>
-        <p className="animate-fade-up animation-delay-200 mt-8 max-w-3xl text-lg text-gray-600 lg:mx-auto leading-relaxed">
-          We operate as a dedicated motor carrier, not a broker or freight marketplace. 
-          Our focus is on safety, consistency, and professional execution for flatbed-appropriate freight.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div className="card-lift group relative p-8 bg-white border-l-4 border-brand-navy shadow-sm">
-          <div className="relative">
-            <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-6 group-hover:bg-brand-navy-light transition-colors duration-300">
-              <Truck className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-display text-2xl text-brand-charcoal mb-3 tracking-wide">FLATBED FOCUSED</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Specializing in steel, pipe, and industrial materials. We do not offer dry van, reefer, or box truck services.
-            </p>
-          </div>
-        </div>
-
-        <div className="card-lift group relative p-8 bg-white border-l-4 border-brand-navy shadow-sm">
-          <div className="relative">
-            <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-6 group-hover:bg-brand-navy-light transition-colors duration-300">
-              <Navigation className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-display text-2xl text-brand-charcoal mb-4 tracking-wide">CORE LANES</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <ArrowLeftRight className="h-5 w-5" />
-                </span>
-                <span className="font-medium">Houston ↔ Georgia</span>
-              </li>
-              <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <ArrowLeftRight className="h-5 w-5" />
-                </span>
-                <span className="font-medium">Houston ↔ Midland, TX</span>
-              </li>
-              <li className="flex items-center text-gray-600">
-                <span className="inline-flex items-center justify-center h-10 w-10 bg-gradient-to-br from-brand-orange to-brand-orange-light text-white mr-3 rounded shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <Plus className="h-5 w-5" />
-                </span>
-                <span className="font-medium">Southeast Coverage</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="card-lift group relative p-8 bg-white border-l-4 border-brand-navy shadow-sm">
-          <div className="relative">
-            <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-6 group-hover:bg-brand-navy-light transition-colors duration-300">
-              <ShieldCheck className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-display text-2xl text-brand-charcoal mb-3 tracking-wide">SAFETY & COMPLIANCE</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Strict safety standards and direct communication. DOT authority <span className="font-bold text-brand-charcoal">3955747</span> reflects our commitment to compliance.
-            </p>
-          </div>
+        <div className="mt-12 grid max-w-2xl grid-cols-1 gap-3 text-sm font-bold text-white sm:grid-cols-3">
+          <span className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-3 backdrop-blur">
+            <MapPin className="h-4 w-4 text-brand-orange" />
+            Spring, TX
+          </span>
+          <span className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-3 backdrop-blur">
+            <FileCheck2 className="h-4 w-4 text-brand-orange" />
+            MC 1473682
+          </span>
+          <span className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-4 py-3 backdrop-blur">
+            <ShieldCheck className="h-4 w-4 text-brand-orange" />
+            DOT 3955747
+          </span>
         </div>
       </div>
     </div>
   </section>
 );
 
-const LanesAndFreight = () => (
-  <section id="services" className="py-24 lg:py-32 bg-brand-navy relative grain-overlay">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="md:grid md:grid-cols-2 md:gap-20 items-center">
-        <div className="relative z-10">
-          <p className="text-brand-orange font-bold tracking-[0.2em] uppercase text-sm mb-4">What We Haul</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-white mb-8 tracking-wide">
-            CAPABILITIES<br />& <span className="text-brand-orange">SCOPE</span>
-          </h2>
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-lg font-bold text-white border-b border-white/20 pb-3 mb-4 uppercase tracking-wide">Freight Types</h3>
-              <ul className="grid grid-cols-2 gap-3 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-brand-orange"></span>
-                  Steel products
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-brand-orange"></span>
-                  Pipe and tubing
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-brand-orange"></span>
-                  Construction materials
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-brand-orange"></span>
-                  Industrial freight
-                </li>
-              </ul>
+const TrustGrid = () => {
+  const items = [
+    {
+      icon: Truck,
+      title: "100% Asset-Based",
+      body: "Direct carrier capacity with owned equipment, direct dispatch, and no freight marketplace handoff.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Safety & Compliance Driven",
+      body: "Flatbed operations built around securement, inspections, documentation, and dependable communication.",
+    },
+    {
+      icon: BadgeCheck,
+      title: "Verified Carrier",
+      body: "Active authority with MC 1473682 and DOT 3955747 available for shipper and broker review.",
+    },
+  ];
+
+  return (
+    <section className="relative z-10 bg-white py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-5 md:grid-cols-3">
+          {items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article
+                key={item.title}
+                className="card-lift rounded-lg border border-slate-200 bg-white p-7 shadow-sm"
+              >
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-md border border-brand-orange/30 bg-orange-50 text-brand-orange">
+                  <Icon className="h-7 w-7" strokeWidth={1.8} />
+                </div>
+                <h3 className="font-display text-xl font-extrabold text-brand-charcoal">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-brand-slate">{item.body}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CoreCapabilities = ({ onOpenQuote }: { onOpenQuote: () => void }) => (
+  <section id="services" className="bg-slate-50 py-20 sm:py-24 lg:py-28">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionIntro
+        eyebrow="Core Capabilities"
+        title={
+          <>
+            Built for steel, pipe, and industrial freight that needs real flatbed discipline.
+          </>
+        }
+        body="Riverway Logistics focuses on freight where securement, communication, and predictable lanes matter. The homepage is designed to make that specialization obvious from the first scroll."
+      />
+
+      <div className="mt-14 grid gap-10 lg:gap-14">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-900/10">
+            <img
+              src="/images/flatbed.png"
+              alt="Flatbed truck carrying steel products on a highway"
+              className="h-full min-h-[320px] w-full object-cover"
+              loading="lazy"
+              width="1408"
+              height="768"
+            />
+          </div>
+
+          <article className="rounded-lg border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-brand-navy text-white">
+              <Truck className="h-6 w-6" />
             </div>
-            
-            <div id="lanes">
-              <h3 className="text-lg font-bold text-white border-b border-white/20 pb-3 mb-4 uppercase tracking-wide">Primary Service Areas</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-brand-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300"><strong className="text-white">Regional Texas:</strong> Specialized service between Houston and Midland/Permian Basin.</span>
-                </li>
-                <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-brand-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-300"><strong className="text-white">Southeast Corridor:</strong> Consistent lanes between Houston and Georgia.</span>
-                </li>
-              </ul>
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
+              Freight Types
+            </p>
+            <h3 className="font-display text-3xl font-extrabold text-brand-charcoal">
+              Flatbed freight with a clear industrial focus.
+            </h3>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {["Steel products", "Pipe and tubing", "Construction materials", "Industrial freight"].map(
+                (item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm font-bold text-brand-charcoal">
+                    <CheckCircle2 className="h-5 w-5 flex-none text-brand-orange" />
+                    {item}
+                  </div>
+                ),
+              )}
             </div>
-            
-            <div className="bg-brand-navy-dark/50 p-5 border-l-4 border-brand-orange">
-              <div className="flex items-start">
-                <Info className="h-5 w-5 text-brand-orange mr-3 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-gray-400">
-                  <strong className="text-gray-300">Note:</strong> We are exclusively a flatbed carrier. We do not provide quotes for household goods, passenger vehicles, or dry van freight.
+            <p className="mt-6 text-sm leading-7 text-brand-slate">
+              Riverway is intentionally focused on flatbed-appropriate freight. That means no dry van,
+              reefer, box truck, household goods, or passenger vehicle quoting.
+            </p>
+          </article>
+        </div>
+
+        <div id="lanes" className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <article className="order-2 rounded-lg border border-slate-200 bg-white p-7 shadow-sm sm:p-9 lg:order-1">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-brand-navy text-white">
+              <Route className="h-6 w-6" />
+            </div>
+            <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.2em] text-brand-orange">
+              Primary Service Areas
+            </p>
+            <h3 className="font-display text-3xl font-extrabold text-brand-charcoal">
+              Regional Texas and Southeast corridor coverage.
+            </h3>
+            <div className="mt-6 space-y-4">
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4">
+                <h4 className="font-display text-lg font-extrabold text-brand-navy">
+                  Regional Texas
+                </h4>
+                <p className="mt-1 text-sm leading-7 text-brand-slate">
+                  Focused flatbed service between Houston, Midland, and the Permian Basin.
+                </p>
+              </div>
+              <div className="rounded-md border border-slate-200 bg-slate-50 p-4">
+                <h4 className="font-display text-lg font-extrabold text-brand-navy">
+                  Southeast Corridor
+                </h4>
+                <p className="mt-1 text-sm leading-7 text-brand-slate">
+                  Consistent lanes connecting Houston and Georgia for industrial freight partners.
                 </p>
               </div>
             </div>
-
-            <a
-              href="tel:+18324770896"
-              className="btn-glow inline-flex items-center px-8 py-4 bg-brand-orange text-white font-bold uppercase tracking-wider hover:bg-brand-orange-light transition-all"
+            <button
+              type="button"
+              onClick={onOpenQuote}
+              className="btn-glow mt-7 inline-flex min-h-[48px] items-center justify-center rounded-md bg-brand-orange px-6 py-3 text-sm font-extrabold uppercase tracking-[0.1em] text-white transition-colors hover:bg-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
             >
-              Request a Quote
-            </a>
-          </div>
-        </div>
-        <div className="mt-12 md:mt-0 relative">
-          <div className="bg-brand-navy-dark p-4">
-            <img 
-              src="/images/truck-coils.png" 
-              alt="Peterbilt flatbed truck with steel coils" 
-              className="w-full h-auto"
+              Request Capacity
+            </button>
+          </article>
+
+          <div className="order-1 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-900/10 lg:order-2">
+            <img
+              src="/images/trucks/truck-1.jpg"
+              alt="Riverway Logistics Peterbilt flatbed truck in Texas"
+              className="h-full min-h-[360px] w-full object-cover object-[45%_center]"
               loading="lazy"
-              width="800"
-              height="500"
+              width="4032"
+              height="3024"
             />
-          </div>
-          <div className="absolute -bottom-8 -left-8 bg-brand-orange p-6 hidden lg:block">
-            <p className="text-white font-display text-4xl tracking-wide">100%</p>
-            <p className="text-white/80 text-sm font-semibold uppercase tracking-wider">Asset-Based</p>
           </div>
         </div>
       </div>
@@ -369,95 +374,104 @@ const LanesAndFreight = () => (
 const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
   const [expanded, setExpanded] = React.useState(false);
 
+  const highlights = [
+    "1+ year flatbed experience required",
+    "TX and Southeast regional lanes",
+    "Home most weekends",
+    "Company drivers and owner-operators welcome",
+  ];
+
+  const details = [
+    "Weekly settlements with direct deposit",
+    "Direct dispatch line with clear communication",
+    "No forced dispatch",
+    "Well-maintained equipment with regular inspections",
+    "Professional, safety-first driver culture",
+    "Consistent steel, pipe, and industrial loads",
+  ];
+
   return (
-    <section id="drivers" className="py-24 lg:py-32 bg-brand-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-navy relative overflow-hidden">
-          {/* Background accent */}
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 hidden lg:block" />
-          <div className="absolute bottom-0 left-0 w-full h-2 bg-brand-orange" />
-          
-          <div className="relative px-8 py-16 md:p-16 lg:p-20">
-            <div className="md:flex md:items-start md:justify-between gap-12">
-              <div className="md:w-2/3">
-                <p className="text-brand-orange font-bold tracking-[0.2em] uppercase text-sm mb-4">Careers</p>
-                <h2 className="font-display text-4xl sm:text-5xl text-white mb-6 tracking-wide">
-                  JOIN OUR <span className="text-brand-orange">TEAM</span>
-                </h2>
-                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  We're looking for experienced flatbed drivers who value safety, clear communication, 
-                  and consistent miles. Company drivers and owner-operators welcome.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  <div className="flex items-center text-gray-300">
-                    <span className="w-6 h-6 bg-brand-orange flex items-center justify-center text-white font-bold text-sm mr-3">✓</span>
-                    <span>1+ year flatbed experience required</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <span className="w-6 h-6 bg-brand-orange flex items-center justify-center text-white font-bold text-sm mr-3">✓</span>
-                    <span>TX & Southeast regional lanes</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <span className="w-6 h-6 bg-brand-orange flex items-center justify-center text-white font-bold text-sm mr-3">✓</span>
-                    <span>Home most weekends</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <span className="w-6 h-6 bg-brand-orange flex items-center justify-center text-white font-bold text-sm mr-3">✓</span>
-                    <span>Pay details available on request</span>
-                  </div>
-                </div>
+    <section id="drivers" className="bg-white py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-lg bg-brand-navy shadow-2xl shadow-slate-900/20">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="p-8 sm:p-10 lg:p-14">
+              <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.22em] text-brand-orange">
+                Driver Careers
+              </p>
+              <h2 className="font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+                Built for flatbed drivers who care about safety and steady work.
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-200">
+                Riverway is looking for experienced flatbed drivers who value professional equipment,
+                consistent lanes, and direct communication with dispatch.
+              </p>
 
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-semibold uppercase tracking-wider transition-colors mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                  aria-expanded={expanded}
-                >
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
-                  <span>More Details</span>
-                </button>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {highlights.map((item) => (
+                  <div key={item} className="flex gap-3 rounded-md border border-white/10 bg-white/5 p-4 text-sm font-semibold text-white">
+                    <CheckCircle2 className="h-5 w-5 flex-none text-brand-orange" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
 
-                <div 
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${expanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="bg-brand-navy-dark/50 p-6 mb-8 border-l-4 border-brand-orange">
-                    <ul className="space-y-3 text-gray-300">
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>Weekly settlements with direct deposit</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>Direct dispatch line – no middlemen</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>No forced dispatch – we respect your time</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>Well-maintained equipment with regular inspections</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>Professional, safety-first driver culture</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-brand-orange mr-3 font-bold">•</span>
-                        <span>Consistent freight – steel, pipe, industrial loads</span>
-                      </li>
-                    </ul>
+              <button
+                type="button"
+                onClick={() => setExpanded((open) => !open)}
+                className="mt-7 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.14em] text-slate-200 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                aria-expanded={expanded}
+              >
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+                />
+                More Driver Details
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  expanded ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="mt-6 rounded-lg border border-white/10 bg-brand-navy-dark/60 p-5">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {details.map((item) => (
+                      <div key={item} className="flex items-start gap-3 text-sm text-slate-200">
+                        <span className="mt-2 h-2 w-2 flex-none rounded-full bg-brand-orange" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div className="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
-                <button 
-                  onClick={onOpenDriverForm}
-                  className="btn-glow inline-flex items-center px-10 py-5 text-lg font-bold uppercase tracking-wider text-white bg-brand-orange hover:bg-brand-orange-light transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
-                >
-                  Apply Now
-                </button>
+              <button
+                type="button"
+                onClick={onOpenDriverForm}
+                className="btn-glow mt-8 inline-flex min-h-[52px] items-center justify-center rounded-md bg-brand-orange px-8 py-4 text-sm font-extrabold uppercase tracking-[0.12em] text-white shadow-xl shadow-orange-500/25 transition-colors hover:bg-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 focus-visible:ring-offset-brand-navy"
+              >
+                Apply Now
+              </button>
+            </div>
+
+            <div className="relative min-h-[360px] lg:min-h-full">
+              <img
+                src="/images/trucks/truck-2.jpg"
+                alt="Riverway Logistics flatbed equipment"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                width="4032"
+                height="3024"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/55 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-brand-navy/20" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-lg border border-white/15 bg-white/90 p-5 shadow-xl backdrop-blur">
+                <div className="flex items-center gap-3 text-brand-navy">
+                  <Clock3 className="h-5 w-5 text-brand-orange" />
+                  <span className="font-display text-lg font-extrabold">Consistent Regional Work</span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-brand-slate">
+                  Texas, Houston to Georgia, and Permian Basin lanes for professional flatbed drivers.
+                </p>
               </div>
             </div>
           </div>
@@ -467,135 +481,142 @@ const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
   );
 };
 
-const Contact = () => (
-  <section id="contact" className="py-24 lg:py-32 bg-brand-cream border-t-4 border-brand-navy">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <p className="text-brand-navy font-bold tracking-[0.2em] uppercase text-sm mb-4">Get In Touch</p>
-        <h2 className="font-display text-4xl sm:text-5xl text-brand-charcoal tracking-wide">
-          CONTACT <span className="text-brand-navy">INFORMATION</span>
-        </h2>
-        <p className="mt-6 text-gray-600 max-w-xl mx-auto">
-          Reach out to our operations team for capacity inquiries or general carrier questions.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <div className="card-lift flex flex-col items-center p-8 bg-white border-l-4 border-brand-navy">
-          <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-5">
-            <Phone className="h-7 w-7 text-white" />
-          </div>
-          <h3 className="font-display text-xl text-brand-charcoal tracking-wide">PHONE</h3>
-          <p className="mt-2 text-gray-500 text-sm">Main Operations</p>
-          <a href="tel:+18324770896" className="mt-3 text-brand-orange font-bold text-lg hover:text-brand-orange-light transition-colors">(832) 477-0896</a>
-        </div>
+const Contact = () => {
+  const cards = [
+    {
+      icon: Phone,
+      label: "Phone",
+      detail: "Main Operations",
+      value: "(832) 477-0896",
+      href: PHONE_HREF,
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      detail: "Dispatch & Sales",
+      value: "operations@riverwaylogistics.com",
+      href: EMAIL_HREF,
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      detail: "Headquarters",
+      value: "Spring, Texas",
+    },
+  ];
 
-        <div className="card-lift flex flex-col items-center p-8 bg-white border-l-4 border-brand-navy">
-          <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-5">
-            <Mail className="h-7 w-7 text-white" />
-          </div>
-          <h3 className="font-display text-xl text-brand-charcoal tracking-wide">EMAIL</h3>
-          <p className="mt-2 text-gray-500 text-sm">Dispatch & Sales</p>
-          <a href="mailto:operations@riverwaylogistics.com" className="mt-3 text-brand-orange font-bold hover:text-brand-orange-light transition-colors text-center break-all">operations@riverwaylogistics.com</a>
-        </div>
+  return (
+    <section id="contact" className="bg-slate-50 py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionIntro
+          eyebrow="Get In Touch"
+          title="Talk to a flatbed carrier that knows the lane."
+          body="Reach Riverway Logistics for capacity inquiries, carrier documentation, driver recruiting, or general operations questions."
+          align="center"
+        />
 
-        <div className="card-lift flex flex-col items-center p-8 bg-white border-l-4 border-brand-navy">
-          <div className="w-16 h-16 bg-brand-navy flex items-center justify-center mb-5">
-            <MapPin className="h-7 w-7 text-white" />
-          </div>
-          <h3 className="font-display text-xl text-brand-charcoal tracking-wide">LOCATION</h3>
-          <p className="mt-2 text-gray-500 text-sm">Headquarters</p>
-          <span className="mt-3 text-brand-orange font-bold text-lg">Spring, Texas</span>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {cards.map((card) => {
+            const Icon = card.icon;
+            const content = (
+              <>
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-md bg-brand-navy text-white">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-orange">
+                  {card.label}
+                </p>
+                <p className="mt-2 text-sm font-semibold text-brand-slate">{card.detail}</p>
+                <p className="mt-4 break-words font-display text-xl font-extrabold text-brand-charcoal">
+                  {card.value}
+                </p>
+              </>
+            );
+
+            return card.href ? (
+              <a
+                key={card.label}
+                href={card.href}
+                className="card-lift rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition-colors hover:border-brand-orange/50"
+              >
+                {content}
+              </a>
+            ) : (
+              <div
+                key={card.label}
+                className="card-lift rounded-lg border border-slate-200 bg-white p-7 shadow-sm"
+              >
+                {content}
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
-  <footer className="bg-brand-navy-dark text-gray-400 py-16 relative grain-overlay">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-        <div>
-          <img 
-            src="/images/logo.png" 
-            alt="Riverway Logistics" 
-            className="h-20 w-auto mb-6"
-          />
-          <p className="text-sm max-w-xs mb-6 leading-relaxed">
-            Professional flatbed transportation services based in Spring, Texas. 
-            Committed to safety, compliance, and reliable freight execution.
-          </p>
-          <div className="flex gap-6 text-xs font-mono text-gray-500">
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-brand-orange"></span>
-              MC: 1473682
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-brand-orange"></span>
-              DOT: 3955747
-            </span>
-          </div>
+  <footer className="bg-brand-navy-dark text-slate-300">
+    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.1fr_0.9fr_0.9fr] lg:px-8">
+      <div>
+        <img src="/images/logo-white.png" alt="Riverway Logistics" className="h-16 w-auto" />
+        <p className="mt-6 max-w-md text-sm leading-7 text-slate-400">
+          Asset-based flatbed transportation services based in Spring, Texas. Focused on steel,
+          pipe, industrial freight, safety, compliance, and reliable execution.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-display text-base font-extrabold uppercase tracking-[0.14em] text-white">
+          Carrier Authority
+        </h4>
+        <div className="mt-5 space-y-3 text-sm text-slate-400">
+          <p>MC: 1473682</p>
+          <p>DOT: 3955747</p>
+          <a
+            href={FMCSA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-bold text-brand-orange transition-colors hover:text-brand-orange-light"
+          >
+            FMCSA Snapshot <ExternalLink className="h-4 w-4" />
+          </a>
         </div>
-        <div>
-          <h4 className="font-display text-xl text-white mb-6 tracking-wide">QUICK CONTACT</h4>
-          <div className="space-y-4">
-            <a 
-              href="mailto:operations@riverwaylogistics.com" 
-              className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
-            >
-              <Mail className="h-5 w-5 text-brand-orange" />
-              operations@riverwaylogistics.com
-            </a>
-            <a 
-              href="tel:+18324770896" 
-              className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
-            >
-              <Phone className="h-5 w-5 text-brand-orange" />
-              (832) 477-0896
-            </a>
-          </div>
-        </div>
-        <div className="md:text-right">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} Riverway Logistics
+      </div>
+
+      <div>
+        <h4 className="font-display text-base font-extrabold uppercase tracking-[0.14em] text-white">
+          Quick Contact
+        </h4>
+        <div className="mt-5 space-y-4 text-sm text-slate-400">
+          <a href={PHONE_HREF} className="flex items-center gap-3 transition-colors hover:text-white">
+            <Phone className="h-4 w-4 text-brand-orange" />
+            (832) 477-0896
+          </a>
+          <a href={EMAIL_HREF} className="flex items-center gap-3 transition-colors hover:text-white">
+            <Mail className="h-4 w-4 text-brand-orange" />
+            operations@riverwaylogistics.com
+          </a>
+          <p className="flex items-center gap-3">
+            <MapPin className="h-4 w-4 text-brand-orange" />
+            Spring, Texas
           </p>
-          <p className="text-xs text-gray-600 mt-2">
-            All rights reserved.
-          </p>
-          <div className="mt-6">
-            <a
-              href="https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3955747&query_type=queryCarrierSnapshot&searchtype=ANY"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              <span>FMCSA Snapshot</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
         </div>
       </div>
     </div>
-    
-    {/* Top accent line */}
-    <div className="absolute top-0 left-0 right-0 h-1 bg-brand-navy" />
 
-    {/* QRO credit */}
-    <div className="relative z-10 border-t border-white/5 py-4">
-      <div className="flex justify-center">
+    <div className="border-t border-white/10 px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; {new Date().getFullYear()} Riverway Logistics. All rights reserved.</p>
         <a
           href="https://qronnect.pro"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-400 transition-colors"
+          className="inline-flex items-center gap-2 transition-colors hover:text-slate-300"
         >
-          <img
-            src="/assets/qro-logo.png"
-            alt="QRO"
-            className="h-5 w-auto opacity-70"
-          />
-          <span className="text-xs">Site by QRO</span>
+          <img src="/assets/qro-logo.png" alt="QRO" className="h-4 w-auto opacity-70" />
+          Site by QRO
         </a>
       </div>
     </div>
@@ -608,19 +629,17 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-brand-cream">
-      <AuthorityBanner />
       <Header />
       <main>
         <Hero onOpenQuote={() => setIsQuoteModalOpen(true)} />
-        <Overview />
-        <LanesAndFreight />
+        <TrustGrid />
+        <CoreCapabilities onOpenQuote={() => setIsQuoteModalOpen(true)} />
         <TrustCompliance />
         <Drivers onOpenDriverForm={() => setIsDriverModalOpen(true)} />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
-      <QroBadge />
       <QuoteForm isOpen={isQuoteModalOpen} onClose={() => setIsQuoteModalOpen(false)} />
       <DriverApplicationForm isOpen={isDriverModalOpen} onClose={() => setIsDriverModalOpen(false)} />
     </div>
