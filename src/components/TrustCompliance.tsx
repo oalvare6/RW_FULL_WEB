@@ -75,12 +75,12 @@ const TrustCompliance: React.FC = () => {
           </div>
 
           <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
               {galleryImages.map((image, index) => (
                 <figure
                   key={image.src}
-                  className={`group overflow-hidden rounded-md bg-slate-100 ${
-                    index === 0 ? "col-span-2" : ""
+                  className={`group shrink-0 snap-center overflow-hidden rounded-md bg-slate-100 w-[85vw] max-w-sm md:w-auto md:max-w-none md:shrink ${
+                    index === 0 ? "md:col-span-2" : ""
                   }`}
                 >
                   <div className={index === 0 ? "aspect-[16/8]" : "aspect-[4/3]"}>
@@ -93,7 +93,7 @@ const TrustCompliance: React.FC = () => {
                       height="420"
                     />
                   </div>
-                  <figcaption className="border-t border-slate-200 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-brand-slate">
+                  <figcaption className="border-t border-slate-200 bg-white px-3 py-2 text-[10px] font-bold uppercase tracking-[0.08em] text-brand-slate line-clamp-2 sm:text-xs">
                     {image.caption}
                   </figcaption>
                 </figure>
@@ -140,10 +140,11 @@ const TrustCompliance: React.FC = () => {
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openDoc === doc.id ? "max-h-44 opacity-100" : "max-h-0 opacity-0"
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    openDoc === doc.id ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
+                  <div className="overflow-hidden">
                   <div className="border-t border-slate-200 px-5 py-4">
                     <p className="text-sm leading-6 text-brand-slate">{doc.description}</p>
                     <a
@@ -155,6 +156,7 @@ const TrustCompliance: React.FC = () => {
                       <Mail className="h-4 w-4" />
                       Request via email
                     </a>
+                  </div>
                   </div>
                 </div>
               </div>

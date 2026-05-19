@@ -256,12 +256,12 @@ const DriverApplicationForm = ({ isOpen, onClose }: DriverApplicationFormProps) 
         className="bg-brand-cream shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-scale-in"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b-4 border-brand-orange bg-brand-navy">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-brand-orange flex items-center justify-center">
+        <div className="flex items-start justify-between gap-3 p-6 border-b-4 border-brand-orange bg-brand-navy sm:items-center">
+          <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <div className="w-12 h-12 shrink-0 bg-brand-orange flex items-center justify-center">
               <Truck className="h-6 w-6 text-white" />
             </div>
-            <h2 id="driver-form-title" className="font-display text-2xl text-white tracking-wide">
+            <h2 id="driver-form-title" className="font-display text-lg text-white tracking-wide sm:text-2xl">
               DRIVER APPLICATION
             </h2>
           </div>

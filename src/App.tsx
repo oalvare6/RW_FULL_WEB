@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BadgeCheck,
   CheckCircle2,
@@ -19,6 +19,7 @@ import QuoteForm from "./components/QuoteForm";
 import DriverApplicationForm from "./components/DriverApplicationForm";
 import BackToTop from "./components/BackToTop";
 import TrustCompliance from "./components/TrustCompliance";
+import AuthorityBar from "./components/AuthorityBar";
 
 const PHONE_HREF = "tel:+18324770896";
 const EMAIL_HREF = "mailto:operations@riverwaylogistics.com";
@@ -35,8 +36,26 @@ const navLinks = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-xl">
+    <header className="relative sticky top-[var(--authority-bar-height)] z-50 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#" className="flex min-w-0 items-center" aria-label="Riverway Logistics home">
           <img
@@ -93,14 +112,21 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute left-0 top-full w-full border-t border-slate-200 bg-white shadow-xl lg:hidden">
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 z-40 bg-brand-navy-dark/50 lg:hidden"
+            aria-label="Close menu"
+            onClick={closeMenu}
+          />
+          <div className="absolute left-0 top-full z-50 w-full border-t border-slate-200 bg-white shadow-xl lg:hidden">
           <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6">
             <nav className="grid gap-2" aria-label="Mobile navigation">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={closeMenu}
                   className="rounded-md px-3 py-3 text-base font-bold uppercase tracking-[0.12em] text-brand-charcoal transition-colors hover:bg-slate-50 hover:text-brand-navy"
                 >
                   {link.label}
@@ -112,10 +138,10 @@ const Header = () => {
                 href={FMCSA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between gap-3 text-sm font-bold text-brand-navy"
+                className="flex items-start justify-between gap-3 text-sm font-bold text-brand-navy"
               >
-                <span>MC: 1473682 | DOT: 3955747</span>
-                <ExternalLink className="h-4 w-4" />
+                <span className="break-words">MC: 1473682 | DOT: 3955747</span>
+                <ExternalLink className="h-4 w-4 shrink-0" />
               </a>
               <a
                 href={PHONE_HREF}
@@ -126,7 +152,8 @@ const Header = () => {
               </a>
             </div>
           </div>
-        </div>
+          </div>
+        </>
       )}
     </header>
   );
@@ -159,7 +186,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
-  <section className="relative isolate min-h-[680px] overflow-hidden bg-brand-navy-dark">
+  <section className="relative isolate min-h-[520px] overflow-hidden bg-brand-navy-dark sm:min-h-[600px] lg:min-h-[680px]">
     <img
       className="absolute inset-0 h-full w-full object-cover object-[64%_center]"
       src="/images/hero-flatbed-pipes.png"
@@ -170,12 +197,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuote }) => (
     <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-brand-navy-dark via-brand-navy-dark/78 to-brand-navy-dark/5 lg:w-[72%]" />
     <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-navy-dark/45 to-transparent" />
 
-    <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
-      <div className="w-full min-w-0 max-w-3xl pt-10">
-        <p className="mb-5 inline-flex max-w-full rounded-md border border-white/20 bg-white/10 px-4 py-2 text-left text-[11px] font-extrabold uppercase leading-5 tracking-[0.18em] text-brand-orange backdrop-blur sm:text-xs sm:tracking-[0.22em]">
+    <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-4 py-12 sm:min-h-[600px] sm:px-6 sm:py-16 lg:min-h-[680px] lg:px-8 lg:py-20">
+      <div className="w-full min-w-0 max-w-3xl pt-4 sm:pt-8">
+        <p className="mb-5 inline-flex max-w-full rounded-md border border-white/20 bg-white/10 px-4 py-2 text-left text-[10px] font-extrabold uppercase leading-4 tracking-[0.18em] text-brand-orange backdrop-blur sm:text-xs sm:leading-5 sm:tracking-[0.22em]">
           Asset-based flatbed motor carrier
         </p>
-        <h1 className="font-display max-w-[11ch] text-[2.35rem] font-black leading-[1.05] text-white min-[420px]:text-5xl sm:max-w-none sm:text-6xl lg:text-7xl">
+        <h1 className="font-display max-w-[14ch] text-[2.35rem] font-black leading-[1.05] text-white min-[420px]:max-w-none min-[420px]:text-5xl sm:text-6xl lg:text-7xl">
           Texas-Based Flatbed Carrier
         </h1>
         <p className="mt-7 max-w-2xl break-words text-base font-medium leading-8 text-slate-100 sm:text-lg lg:text-xl">
@@ -283,7 +310,7 @@ const CoreCapabilities = ({ onOpenQuote }: { onOpenQuote: () => void }) => (
             <img
               src="/images/flatbed.png"
               alt="Flatbed truck carrying steel products on a highway"
-              className="h-full min-h-[320px] w-full object-cover"
+              className="h-full min-h-[240px] w-full object-cover sm:min-h-[320px]"
               loading="lazy"
               width="1408"
               height="768"
@@ -359,7 +386,7 @@ const CoreCapabilities = ({ onOpenQuote }: { onOpenQuote: () => void }) => (
             <img
               src="/images/trucks/truck-1.jpg"
               alt="Riverway Logistics Peterbilt flatbed truck in Texas"
-              className="h-full min-h-[360px] w-full object-cover object-[45%_center]"
+              className="h-full min-h-[240px] w-full object-cover object-[45%_center] sm:min-h-[320px] md:min-h-[360px]"
               loading="lazy"
               width="4032"
               height="3024"
@@ -429,11 +456,12 @@ const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  expanded ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
+                className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                  expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                 }`}
               >
-                <div className="mt-6 rounded-lg border border-white/10 bg-brand-navy-dark/60 p-5">
+                <div className="overflow-hidden">
+                  <div className="mt-6 rounded-lg border border-white/10 bg-brand-navy-dark/60 p-5">
                   <div className="grid gap-3 sm:grid-cols-2">
                     {details.map((item) => (
                       <div key={item} className="flex items-start gap-3 text-sm text-slate-200">
@@ -441,6 +469,7 @@ const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
                         <span>{item}</span>
                       </div>
                     ))}
+                  </div>
                   </div>
                 </div>
               </div>
@@ -454,7 +483,7 @@ const Drivers = ({ onOpenDriverForm }: { onOpenDriverForm: () => void }) => {
               </button>
             </div>
 
-            <div className="relative min-h-[360px] lg:min-h-full">
+            <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-full">
               <img
                 src="/images/trucks/truck-2.jpg"
                 alt="Riverway Logistics flatbed equipment"
@@ -594,8 +623,11 @@ const Footer = () => (
             <Phone className="h-4 w-4 text-brand-orange" />
             (832) 477-0896
           </a>
-          <a href={EMAIL_HREF} className="flex items-center gap-3 transition-colors hover:text-white">
-            <Mail className="h-4 w-4 text-brand-orange" />
+          <a
+            href={EMAIL_HREF}
+            className="flex items-center gap-3 break-words transition-colors hover:text-white"
+          >
+            <Mail className="h-4 w-4 shrink-0 text-brand-orange" />
             operations@riverwaylogistics.com
           </a>
           <p className="flex items-center gap-3">
@@ -629,6 +661,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-brand-cream">
+      <AuthorityBar />
       <Header />
       <main>
         <Hero onOpenQuote={() => setIsQuoteModalOpen(true)} />
