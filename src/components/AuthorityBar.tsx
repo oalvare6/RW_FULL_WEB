@@ -10,6 +10,12 @@ const AuthorityBar = () => (
   >
     <div className="mx-auto flex h-[var(--authority-bar-height)] max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6 lg:px-8">
       <div className="flex min-w-0 flex-1 items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.08em] sm:gap-3 sm:text-xs sm:tracking-[0.1em]">
+        <span className="hidden shrink-0 whitespace-nowrap text-brand-orange sm:inline">
+          Verified carrier
+        </span>
+        <span className="hidden text-white/30 sm:inline" aria-hidden="true">
+          ·
+        </span>
         <span className="shrink-0 whitespace-nowrap">MC 1473682</span>
         <span className="text-white/30" aria-hidden="true">
           ·
@@ -26,7 +32,7 @@ const AuthorityBar = () => (
         rel="noopener noreferrer"
         className="inline-flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-brand-orange transition-colors hover:text-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange sm:gap-1.5 sm:text-xs"
       >
-        <span className="hidden sm:inline">FMCSA Snapshot</span>
+        <span className="hidden sm:inline">Check FMCSA</span>
         <span className="sm:hidden">FMCSA</span>
         <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
       </a>

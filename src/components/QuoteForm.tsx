@@ -227,15 +227,25 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
     >
       <div 
         ref={modalRef}
-        className="bg-brand-cream shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in"
+        className="w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in rounded-2xl bg-brand-cream shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b-4 border-brand-orange bg-brand-navy">
-          <h2 id="quote-form-title" className="font-display text-2xl text-white tracking-wide">REQUEST A QUOTE</h2>
+        <div className="flex items-start justify-between gap-4 border-b border-white/10 bg-brand-navy p-6">
+          <div>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-orange">
+              Capacity Request
+            </p>
+            <h2 id="quote-form-title" className="mt-2 font-display text-2xl font-extrabold text-white">
+              Send Riverway the lane details.
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-slate-300">
+              Origin, destination, freight type, and timing help operations route the request cleanly.
+            </p>
+          </div>
           <button
             onClick={onClose}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+            className="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md text-gray-400 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -245,16 +255,18 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
         <div className="p-6">
           {status === 'success' ? (
             <div className="text-center py-8">
-              <div className="w-20 h-20 bg-brand-navy flex items-center justify-center mx-auto mb-6">
+              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-xl bg-brand-navy">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="font-display text-2xl text-brand-charcoal mb-2 tracking-wide">QUOTE REQUEST SENT!</h3>
-              <p className="text-gray-600 mb-6">We'll get back to you within 1 business day.</p>
+              <h3 className="font-display text-2xl font-extrabold text-brand-charcoal mb-2">Quote request received.</h3>
+              <p className="text-gray-600 mb-6">
+                Operations has the lane details and will follow up using the contact information provided.
+              </p>
               <button
                 onClick={onClose}
-                className="px-8 py-3 min-h-[48px] bg-brand-navy text-white font-bold uppercase tracking-wider hover:bg-brand-navy-light transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+                className="min-h-[48px] rounded-md bg-brand-navy px-8 py-3 font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-brand-navy-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
               >
                 Close
               </button>
@@ -263,7 +275,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Name *</label>
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Your name *</label>
                   <input
                     ref={firstInputRef}
                     type="text"
@@ -271,23 +283,23 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Smith"
+                    placeholder="Morgan Reyes"
                     autoComplete="name"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.name && <p className="text-red-600 text-xs mt-1 font-medium">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="company" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Company *</label>
+                  <label htmlFor="company" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Company *</label>
                   <input
                     type="text"
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="Company name"
+                    placeholder="Gulf Coast Pipe Supply"
                     autoComplete="organization"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.company ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.company ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.company && <p className="text-red-600 text-xs mt-1 font-medium">{errors.company}</p>}
                 </div>
@@ -295,45 +307,45 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Email *</label>
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Work email *</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="you@company.com"
+                    placeholder="dispatch@yourcompany.com"
                     autoComplete="email"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.email && <p className="text-red-600 text-xs mt-1 font-medium">{errors.email}</p>}
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Phone *</label>
+                  <label htmlFor="phone" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Best callback number *</label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="(555) 123-4567"
+                    placeholder="Direct line or mobile"
                     autoComplete="tel"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.phone && <p className="text-red-600 text-xs mt-1 font-medium">{errors.phone}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="freightType" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Freight Type *</label>
+                <label htmlFor="freightType" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Freight type *</label>
                 <select
                   id="freightType"
                   name="freightType"
                   value={formData.freightType}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.freightType ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                  className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.freightType ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                 >
-                  <option value="">Select freight type</option>
+                  <option value="">Choose flatbed freight type</option>
                   <option value="steel">Steel Products</option>
                   <option value="pipe">Pipe & Tubing</option>
                   <option value="construction">Construction Materials</option>
@@ -345,7 +357,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="origin" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Origin *</label>
+                  <label htmlFor="origin" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Origin *</label>
                   <input
                     type="text"
                     id="origin"
@@ -353,41 +365,43 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
                     value={formData.origin}
                     onChange={handleChange}
                     placeholder="Houston, TX"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.origin ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.origin ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.origin && <p className="text-red-600 text-xs mt-1 font-medium">{errors.origin}</p>}
                 </div>
                 <div>
-                  <label htmlFor="destination" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Destination *</label>
+                  <label htmlFor="destination" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Destination *</label>
                   <input
                     type="text"
                     id="destination"
                     name="destination"
                     value={formData.destination}
                     onChange={handleChange}
-                    placeholder="Atlanta, GA"
-                    className={`w-full px-4 py-3 min-h-[48px] border-2 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors ${errors.destination ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
+                    placeholder="Birmingham, AL"
+                    className={`w-full min-h-[48px] rounded-md border bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy ${errors.destination ? 'border-red-500 bg-red-50' : 'border-gray-200'}`}
                   />
                   {errors.destination && <p className="text-red-600 text-xs mt-1 font-medium">{errors.destination}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="notes" className="block text-sm font-bold text-brand-charcoal mb-1.5 uppercase tracking-wide">Additional Details</label>
+                <label htmlFor="notes" className="mb-1.5 block text-sm font-bold text-brand-charcoal">Load details</label>
                 <textarea
                   id="notes"
                   name="notes"
                   value={formData.notes}
                   onChange={handleChange}
                   rows={3}
-                  placeholder="Weight, dimensions, pickup date, special requirements..."
-                  className="w-full px-4 py-3 border-2 border-gray-200 bg-white focus:ring-2 focus:ring-brand-navy focus:border-brand-navy outline-none transition-colors resize-none"
+                  placeholder="48k lbs pipe, 40 ft length, pickup window, tarp/chain/strap notes..."
+                  className="w-full resize-none rounded-md border border-gray-200 bg-white px-4 py-3 outline-none transition-colors focus:border-brand-navy focus:ring-2 focus:ring-brand-navy"
                 />
               </div>
 
               {status === 'error' && (
-                <div className="p-4 bg-red-50 border-l-4 border-red-500">
-                  <p className="text-red-700 text-sm mb-2 font-medium">There was an issue submitting your request.</p>
+                <div className="rounded-md border border-red-200 bg-red-50 p-4">
+                  <p className="text-red-700 text-sm mb-2 font-medium">
+                    The form did not send. Email operations directly with the lane and freight details.
+                  </p>
                   <a 
                     href="mailto:operations@riverwaylogistics.com?subject=Quote Request"
                     className="text-red-700 underline text-sm font-bold hover:text-red-800"
@@ -400,9 +414,9 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose }) => {
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="btn-glow w-full py-4 min-h-[52px] bg-brand-orange text-white font-bold uppercase tracking-wider hover:bg-brand-orange-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+                className="btn-glow min-h-[52px] w-full rounded-md bg-brand-orange py-4 font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-brand-orange-light focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {status === 'submitting' ? 'Sending...' : 'Submit Quote Request'}
+                {status === 'submitting' ? 'Sending lane details...' : 'Send Lane Details'}
               </button>
             </form>
           )}

@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <title>Riverway Logistics | Flatbed Motor Carrier</title>
 
     <meta
       name="description"
-      content="Texas-based flatbed transportation carrier providing regional and long-haul services. MC: 1473682 | DOT: 3955747"
+      content="Texas-based flatbed carrier serving Texas, the Southeast, and select Midwest and Mid-Atlantic lanes. MC: 1473682 | DOT: 3955747"
     />
 
     <!-- Favicon -->
@@ -60,24 +60,50 @@
     <style>
       :root {
         --authority-bar-height: 2.25rem;
+        --riverway-line: rgba(15, 23, 42, 0.08);
+        --riverway-line-strong: rgba(11, 39, 72, 0.14);
+        --riverway-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+        --riverway-shadow-strong: 0 28px 70px rgba(7, 26, 48, 0.18);
       }
 
       html {
         scroll-behavior: smooth;
+        overflow-x: clip;
+        max-width: 100%;
       }
 
       body {
         font-family: 'Open Sans', sans-serif;
-        background-color: #f8fafc;
+        background:
+          radial-gradient(circle at top left, rgba(242, 140, 40, 0.08), transparent 30rem),
+          linear-gradient(180deg, #ffffff 0%, #f8fafc 42%, #f1f5f9 100%);
         color: #111827;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
+        overflow-x: clip;
+        max-width: 100%;
+      }
+
+      #root {
+        overflow-x: clip;
+        max-width: 100%;
+        min-height: 100%;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
       }
 
       .font-display {
         font-family: 'Montserrat', sans-serif;
-        letter-spacing: 0;
+        letter-spacing: -0.02em;
+      }
+
+      ::selection {
+        background: rgba(242, 140, 40, 0.22);
+        color: #071a30;
       }
 
       /* Animations */
@@ -165,20 +191,42 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+        background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.16) 45%, transparent 65%);
+        opacity: 0;
         transform: translateX(-100%);
-        transition: transform 0.6s ease;
+        transition: opacity 0.2s ease, transform 0.7s ease;
       }
       .btn-glow:hover::after {
+        opacity: 1;
         transform: translateX(100%);
       }
 
       .card-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       }
       .card-lift:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+        transform: translateY(-3px);
+        box-shadow: var(--riverway-shadow);
+        border-color: var(--riverway-line-strong);
+      }
+
+      .logistics-surface {
+        background-image:
+          linear-gradient(rgba(11, 39, 72, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(11, 39, 72, 0.035) 1px, transparent 1px);
+        background-size: 44px 44px;
+      }
+
+      .fine-border {
+        border-color: var(--riverway-line);
+      }
+
+      .soft-panel-shadow {
+        box-shadow: var(--riverway-shadow);
+      }
+
+      .strong-panel-shadow {
+        box-shadow: var(--riverway-shadow-strong);
       }
 
       .scrollbar-hide::-webkit-scrollbar {
@@ -187,6 +235,66 @@
       .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-stagger > .reveal-child {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal-stagger.is-visible > .reveal-child {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-stagger.is-visible > .reveal-child:nth-child(1) { transition-delay: 0ms; }
+      .reveal-stagger.is-visible > .reveal-child:nth-child(2) { transition-delay: 80ms; }
+      .reveal-stagger.is-visible > .reveal-child:nth-child(3) { transition-delay: 160ms; }
+      .reveal-stagger.is-visible > .reveal-child:nth-child(4) { transition-delay: 240ms; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .reveal,
+        .reveal.is-visible,
+        .reveal-stagger > .reveal-child,
+        .reveal-stagger.is-visible > .reveal-child {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .animate-fade-up,
+        .animate-fade-in,
+        .animate-slide-left,
+        .animate-scale-in {
+          animation: none;
+          opacity: 1;
+        }
+
+        .animation-delay-100,
+        .animation-delay-200,
+        .animation-delay-300,
+        .animation-delay-400,
+        .animation-delay-500,
+        .animation-delay-600 {
+          opacity: 1;
+        }
       }
     </style>
   </head>
